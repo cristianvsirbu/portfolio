@@ -4,13 +4,15 @@ import About from './components/About'
 import Projects from './components/Projects'
 import CTA from './components/CTA'
 
-function App() {
-    <div className='app'>
+const App = () => {
+  return (
+    <div className=''>
       <Hero />
       <About />
       <Projects />
       <CTA />
     </div>
+  )
 }
 
 export default App
