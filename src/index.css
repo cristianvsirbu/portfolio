@@ -21,3 +21,17 @@ body {
   font-size: 6rem;
   color: #cca2f1;
 }
+
+#hero_vector {
+  stroke-dasharray: 1436;
+  animation: dash 2.5s ease-out forwards;
+}
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: 1436;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
