@@ -3,8 +3,21 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-#root {
-  --dark: #000000;
-  --gray: #282828;
-  --light-gray: #7e7e7e;
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.my_name {
+  font-family: Dancing Script, cursive;
+  font-size: 6rem;
+  color: #cca2f1;
 }
