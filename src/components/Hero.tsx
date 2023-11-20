@@ -1,7 +1,7 @@
 const Hero = () => {
 	return (
 		<div className="h-[100vh] flex flex-col items-center justify-center space-y-12">
-			<div className="w-[25rem] h-[25rem] bg-[#cca2f1bb] rounded-full flex items-center justify-center">
+			<div className="w-[25rem] h-[25rem] bg-gradient-to-b from-yellow-300 to-green-300 rounded-full flex items-center justify-center">
 				<img
 					src="/profile.png"
 					alt="Profile Picture"
