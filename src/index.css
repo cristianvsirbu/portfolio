@@ -14,12 +14,23 @@ body {
   height: 100vh;
   background-color: black;
   font-family: 'DM Sans', sans-serif;
+  font-size: 4.5rem;
+}
+
+.top_level_container {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+section {
+  scroll-snap-align: start;
 }
 
 .my_name {
   font-family: Dancing Script, cursive;
   font-size: 6rem;
-  background-image: linear-gradient(180deg, #A9FE81 11.87%, #AB83FE 100%);
+  background-image: linear-gradient(180deg, #A9FE81 11.87%, #FFE597 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
