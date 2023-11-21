@@ -36,6 +36,21 @@ section {
   color: transparent;
 }
 
+.projects_label {
+  display: inline-block;
+  font-family: 'Nanum Pen Script', cursive;
+  font-size: 3rem;
+  transform: translate(48rem, -27rem);
+  background-image: linear-gradient(180deg, #A9FE81 11.87%, #FFE597 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.projects_arrow {
+  transform: translate(50rem, -25rem);
+}
+
 #hero_vector {
   stroke-dasharray: 1436;
   animation: dash 2.5s ease-out forwards;
