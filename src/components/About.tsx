@@ -968,7 +968,7 @@ const About = () => {
 						</defs>
 					</svg>
 					<img
-						src="/public/wedding-photo.svg"
+						src="/wedding-photo.svg"
 						alt="Wedding"
 						className="translate-y-[-10rem]"
 					/>
@@ -1479,7 +1479,7 @@ const About = () => {
 						</defs>
 					</svg>
 					<img
-						src="/public/medicine-photo.svg"
+						src="/medicine-photo.svg"
 						alt="Medicine"
 						className="translate-y-[-18rem] -translate-x-[7rem]"
 					/>
