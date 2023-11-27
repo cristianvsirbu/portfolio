@@ -37,8 +37,8 @@ const Hero = () => {
 						y2="139"
 						gradientUnits="userSpaceOnUse"
 					>
-						<stop stop-color="#FFE597" />
-						<stop offset="1" stop-color="#AAFF82" />
+						<stop stopColor="#FFE597" />
+						<stop offset="1" stopColor="#AAFF82" />
 					</linearGradient>
 				</defs>
 			</svg>
