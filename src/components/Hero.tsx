@@ -1,6 +1,6 @@
 const Hero = () => {
 	return (
-		<section className="h-full w-full flex flex-col items-center justify-center xl:space-y-12">
+		<section className="h-[100vh] w-full flex flex-col items-center justify-center xl:space-y-12">
 			<div className="w-[15rem] xl:w-[20rem] h-[15rem] xl:h-[20rem] bg-gradient-to-b from-yellow-300 to-green-300 rounded-full flex items-center justify-center">
 				<img
 					src="/profile.png"
@@ -9,7 +9,7 @@ const Hero = () => {
 				/>
 			</div>
 			<div className="text-center text-white mt-6">
-				<p className="heading text-4xl xl:text-6xl">
+				<p className="font-bold text-4xl xl:text-6xl">
 					Hi, I'm <span className="my_name text-[3rem] xl:text-[5rem]">Cristian</span>.
 					<br />A Web Developer.
 				</p>

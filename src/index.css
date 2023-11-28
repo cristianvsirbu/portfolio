@@ -12,14 +12,10 @@ body {
   height: 100vh;
   background-color: black;
   font-family: 'DM Sans', sans-serif;
-  font-size: 1.5rem;
   font-weight: 400;
+  min-width: 250px;
 }
 
-.heading {
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 900;
-}
 
 .top_level_container {
   scroll-snap-type: y mandatory;
