@@ -23,6 +23,7 @@ body {
   height: 100vh;
 }
 
+
 section {
   scroll-snap-align: start;
 }
