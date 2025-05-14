@@ -10,7 +10,7 @@ const Header = () => {
         { href: '/contact', label: 'Contact' },
       ];
     return (
-        <header className="flex justify-center items-center p-4 bg-gray-800 text-white">
+        <header className="flex justify-center items-center p-4">
             <nav>
                 <ul className="flex space-x-4">
                     {navLinks.map((link) => (
