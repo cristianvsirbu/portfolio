@@ -6,7 +6,6 @@ import Experience from '@/components/Experience';
 import Projects from '@/components/Projects';
 
 export default function Home() {
-  // Only define the sections you want in the hash-based navigation
   const sections = useMemo(
     () => ['about', 'experience', 'projects', 'contact'],
     []
@@ -16,36 +15,30 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
-    const hash = window.location.hash.substring(1);
-    if (sections.includes(hash)) {
-      setActiveSection(hash);
-    } else {
-      setActiveSection('home');
-    }
-
-    // Listen and update for hash changes
-    const handleHashChange = () => {
-      const newHash = window.location.hash.substring(1);
-      if (sections.includes(newHash)) {
-        setActiveSection(newHash);
+    const updateSectionFromHash = () => {
+      const hash = window.location.hash.substring(1);
+      if (sections.includes(hash)) {
+        setActiveSection(hash);
       } else {
         setActiveSection('home');
       }
     };
-    window.addEventListener('hashchange', handleHashChange);
+    updateSectionFromHash();
 
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    window.addEventListener('hashchange', updateSectionFromHash);
+
+    return () =>
+      window.removeEventListener('hashchange', updateSectionFromHash);
   }, [sections]);
 
-  // Update the hash and active section on button click
   const handleSectionClick = (section: string) => {
     if (section === 'home') {
-      // Removes hash from the URL, leaving '/'
+      window.history.pushState({}, '', '/');
+      // Manually trigger hashchange event since pushState doesn't do it
+      window.dispatchEvent(new HashChangeEvent('hashchange'));
+    } else {
       window.history.pushState({}, '', '/');
       setActiveSection('home');
-    } else {
-      window.location.hash = section;
-      setActiveSection(section);
     }
   };
 
