@@ -42,27 +42,36 @@ export default function Home() {
 
   return (
     <main>
-      <nav className="flex gap-4 justify-center my-8">
+      <nav className="flex gap-6 justify-center my-8">
         <button
           onClick={() => handleSectionClick('home')}
-          className={`px-4 py-2 ${
+          className={`rounded-full cursor-pointer border-2 border-[#c9c9c9]/50 h-12 w-12 font-sonsie text-2xl ${
             activeSection === 'home' ? 'text-white' : 'text-gray-400'
           }`}
         >
-          Home
+          C
         </button>
 
-        {sections.map((section) => (
+        <div className="flex gap-8 border-2 border-[#c9c9c9]/50 rounded-full p-2">
+          {sections.map((section) => (
+            <button
+              key={section}
+              onClick={() => handleSectionClick(section)}
+              className={`px-4 cursor-pointer hover:text-white ${
+                activeSection === section
+                  ? 'text-white rounded-full bg-[#d9d9d9]/40'
+                  : 'text-gray-400'
+              }`}
+            >
+              {section.charAt(0).toUpperCase() + section.slice(1)}
+            </button>
+          ))}
           <button
-            key={section}
-            onClick={() => handleSectionClick(section)}
-            className={`px-4 py-2 cursor-pointer hover:text-white ${
-              activeSection === section ? 'text-white' : 'text-gray-400'
-            }`}
+            className={`px-4 cursor-pointer bg-red-500 text-white rounded-full`}
           >
-            {section.charAt(0).toUpperCase() + section.slice(1)}
+            Resume
           </button>
-        ))}
+        </div>
       </nav>
 
       {activeSection === 'home' && (

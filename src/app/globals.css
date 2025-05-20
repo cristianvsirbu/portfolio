@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Sonsie+One&display=swap');
 @import 'tailwindcss';
 
 :root {
@@ -6,12 +6,15 @@
   --foreground: #dedede;
   --primary: #0070f3;
   --secondary: #1c1c1e;
-  --accent: #ff4081;
-  --border: #eaeaea;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: 'Inter', Arial, Helvetica, sans-serif;
+}
+
+/* You can add a utility class for Sonsie One */
+.font-sonsie {
+  font-family: 'Sonsie One', cursive;
 }
