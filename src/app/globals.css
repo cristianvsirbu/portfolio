@@ -1,20 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Sonsie+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Sonsie+One&display=swap');
 @import 'tailwindcss';
 
 :root {
   --background: #000000;
-  --foreground: #dedede;
   --primary: #0070f3;
   --secondary: #1c1c1e;
+  --foreground: #ffffff;
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
+  color: #86868B;
   font-family: 'Inter', Arial, Helvetica, sans-serif;
 }
 
-/* You can add a utility class for Sonsie One */
+
 .font-sonsie {
   font-family: 'Sonsie One', cursive;
 }
