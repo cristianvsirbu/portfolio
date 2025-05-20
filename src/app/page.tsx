@@ -37,8 +37,7 @@ export default function Home() {
       // Manually trigger hashchange event since pushState doesn't do it
       window.dispatchEvent(new HashChangeEvent('hashchange'));
     } else {
-      window.history.pushState({}, '', '/');
-      setActiveSection('home');
+      window.location.hash = section;
     }
   };
 
