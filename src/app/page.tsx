@@ -41,7 +41,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen flex flex-col">
+    <main className="min-h-screen max-w-[1200px] mx-auto flex flex-col">
       <nav className="flex gap-6 justify-center my-8">
         <button
           onClick={() => handleSectionClick('home')}
@@ -75,11 +75,11 @@ export default function Home() {
       </nav>
 
       {activeSection === 'home' && (
-        <div className="flex flex-col flex-grow items-center justify-center w-full h-full max-w-[1200px] mx-auto">
-          <h1 className="text-6xl leading-none text-white font-medium">
+        <div className="flex flex-col flex-grow items-center justify-center w-full h-full">
+          <h1 className="text-7xl leading-tight text-white font-medium">
             Hi, I’m Cristian Sîrbu
           </h1>
-          <h1 className="text-5xl text-white leading-none font-medium">
+          <h1 className="text-6xl text-white leading-none font-medium">
             I bring pixels to life with code
           </h1>
           <p className="mt-4 text-xl max-w-[1000px] text-center">
