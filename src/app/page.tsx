@@ -11,7 +11,6 @@ export default function Home() {
     []
   );
 
-  // The initial state defaults to "home"
   const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
@@ -57,7 +56,7 @@ export default function Home() {
           <button
             key={section}
             onClick={() => handleSectionClick(section)}
-            className={`px-4 py-2 ${
+            className={`px-4 py-2 cursor-pointer hover:text-white ${
               activeSection === section ? 'text-white' : 'text-gray-400'
             }`}
           >
