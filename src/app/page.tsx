@@ -4,8 +4,9 @@ import About from '@/components/About';
 import Contact from '@/components/Contact';
 import Experience from '@/components/Experience';
 import Projects from '@/components/Projects';
+import Home from '@/components/Home';
 
-export default function Home() {
+export default function Page() {
   const sections = useMemo(
     () => ['about', 'experience', 'projects', 'contact'],
     []
@@ -73,27 +74,11 @@ export default function Home() {
           </button>
         </div>
       </nav>
-
-      {activeSection === 'home' && (
-        <div className="flex flex-col flex-grow items-center justify-center w-full h-full">
-          <h1 className="text-7xl leading-none text-white font-medium">
-            Hi, I’m Cristian Sîrbu
-          </h1>
-          <h1 className="text-6xl text-white leading-tight font-medium">
-            I bring pixels to life with code
-          </h1>
-          <p className="text-xl max-w-[1000px] text-[#86868B] text-center">
-            Frontend dev who crafts seamless web experiences with React, clean
-            code, and a touch of creative magic. I obsess over the details -
-            from buttery animations to maintainable code, because great
-            interfaces should feel as good as they look.
-          </p>
-        </div>
-      )}
-      {activeSection === 'about' && <About />}
-      {activeSection === 'experience' && <Experience />}
-      {activeSection === 'projects' && <Projects />}
-      {activeSection === 'contact' && <Contact />}
+      <Home />
+      <About />
+      <Experience />
+      <Projects />
+      <Contact />
     </main>
   );
 }

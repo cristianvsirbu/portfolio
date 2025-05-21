@@ -3,6 +3,7 @@ import { Job, Project, Technology } from '@/lib/types';
 
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/cristianvsirbu/';
 export const GITHUB_URL = 'https://github.com/cristianvsirbu';
+export const PROFILE_PIC = '/images/profile.png';
 export const EMAIL = 'cristiansirbudev@gmail.com';
 export const LOCATION = 'Bucharest, Romania';
 export const PROGRAMMING_YEARS = getCurrentYear() - 2018;
