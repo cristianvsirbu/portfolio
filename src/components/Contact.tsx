@@ -46,7 +46,7 @@ const Contact = () => {
                 height={56}
                 className="cursor-pointer"
               />
-              <span className="text-white text-xs text-center">Github</span>
+              <span className="text-white text-xs text-center">GitHub</span>
             </a>
             <a
               href={LINKEDIN_URL}
