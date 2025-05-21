@@ -41,7 +41,7 @@ const Contact = () => {
             >
               <Image
                 src="/icons/technologies/additional/github.svg"
-                alt="LinkedIn profile"
+                alt="GitHub profile"
                 width={56}
                 height={56}
                 className="cursor-pointer"
