@@ -17,6 +17,7 @@ export interface Job {
   position: string;
   location: string;
   period: string;
+  actual?: boolean;
   highlights: {
     title: string;
     content: string;
