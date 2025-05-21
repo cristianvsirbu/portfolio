@@ -4,8 +4,9 @@ import About from '@/components/About';
 import Contact from '@/components/Contact';
 import Experience from '@/components/Experience';
 import Projects from '@/components/Projects';
+import Home from '@/components/Home';
 
-export default function Home() {
+export default function Page() {
   const sections = useMemo(
     () => ['about', 'experience', 'projects', 'contact'],
     []
@@ -73,12 +74,11 @@ export default function Home() {
           </button>
         </div>
       </nav>
-
-      {activeSection === 'home' && <Home />}
-      {activeSection === 'about' && <About />}
-      {activeSection === 'experience' && <Experience />}
-      {activeSection === 'projects' && <Projects />}
-      {activeSection === 'contact' && <Contact />}
+      <Home />
+      <About />
+      <Experience />
+      <Projects />
+      <Contact />
     </main>
   );
 }

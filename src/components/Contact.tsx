@@ -7,9 +7,9 @@ const Contact = () => {
     <section className="px-4 md:px-6">
       <h1 className="title">Contact</h1>
       <h2 className="subtitle">Get In Touch:</h2>
-      <div className="flex flex-col md:flex-row gap-16 mt-8">
+      <div className="flex flex-col md:flex-row gap-16 mt-4">
         <div className="flex flex-col gap-4 w-full md:max-w-1/2">
-          <p className="paragraph mt-5">
+          <p className="paragraph">
             Feel free to drop me a message — whether it&apos;s a question,
             feedback, or just to say hi. My inbox is always open, and I’ll get
             back to you as soon as I can!
@@ -28,7 +28,7 @@ const Contact = () => {
           </a>
         </div>
         <div className="flex flex-col gap-4 w-full md:max-w-1/2">
-          <p className="paragraph mt-5">
+          <p className="paragraph">
             You can also find me on GitHub and LinkedIn if you&apos;d like to
             connect or check out more of what I’m up to.
           </p>
@@ -66,7 +66,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-      <p className="w-full text-center font-medium text-xs text-[#86868B] mt-8">
+      <p className="w-full text-center font-medium text-xs text-[#86868B] mt-16 mb-4">
         Built &amp;&amp; Designed with
         <Image
           src="/icons/misc/heart.svg"
