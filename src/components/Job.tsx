@@ -5,7 +5,7 @@ interface JobProps {
   job: JobType;
 }
 
-const Job: React.FC<JobProps> = ({ job }) => {
+export default function Job({ job }: JobProps) {
   return (
     <div className="flex flex-col gap-8 w-full md:w-1/2">
       <div className="flex items-center justify-between">
@@ -28,6 +28,4 @@ const Job: React.FC<JobProps> = ({ job }) => {
       </div>
     </div>
   );
-};
-
-export default Job;
+}

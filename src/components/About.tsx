@@ -49,7 +49,12 @@ const About = () => {
                   key={tech.name}
                   className="flex flex-col items-center gap-1 sm:gap-2 w-[80px] sm:w-auto"
                 >
-                  <Image src={tech.icon} alt={`${tech.name} icon`} width={64} height={64} />
+                  <Image
+                    src={tech.icon}
+                    alt={`${tech.name} icon`}
+                    width={64}
+                    height={64}
+                  />
                   <span className="text-white text-xs text-center">
                     {tech.name}
                   </span>
@@ -66,7 +71,12 @@ const About = () => {
                   key={tech.name}
                   className="flex flex-col items-center gap-1"
                 >
-                  <Image src={tech.icon} alt={`${tech.name} icon`} width={48} height={48} />
+                  <Image
+                    src={tech.icon}
+                    alt={`${tech.name} icon`}
+                    width={48}
+                    height={48}
+                  />
                   <span className="text-white text-[10px] text-center">
                     {tech.name}
                   </span>
