@@ -2,6 +2,7 @@
 import { useActiveSection } from '@/hooks/useActiveSection';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
+import ThemeSelector from './ThemeSelector';
 
 export default function Navigation() {
   const { activeSection, navSections } = useActiveSection();
@@ -101,6 +102,7 @@ export default function Navigation() {
             Resume
           </a>
         </div>
+        <ThemeSelector />
       </nav>
     </header>
   );

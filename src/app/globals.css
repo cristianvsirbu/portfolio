@@ -8,6 +8,13 @@
   --primary: #0070f3;
   --secondary: #1c1c1e;
   --foreground: #ffffff;
+  --transition-duration: 0.5s;
+}
+
+* {
+  transition: background-color var(--transition-duration),
+    border-color var(--transition-duration),
+    color var(--transition-duration);
 }
 
 html {
@@ -95,4 +102,12 @@ body {
   flex: 1;
   gap: 12px;
   max-height: 40px;
+}
+
+.text-primary {
+  color: var(--primary);
+}
+
+.text-secondary {
+  color: var(--secondary);
 }

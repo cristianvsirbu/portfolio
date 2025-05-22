@@ -30,3 +30,10 @@ export interface Section {
   component: React.FC;
   isSpecial?: boolean;
 }
+
+export type ThemeColor = {
+  name: string;
+  primaryColor: string;
+  secondaryColor: string;
+  id: string;
+};
