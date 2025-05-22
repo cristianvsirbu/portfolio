@@ -27,6 +27,10 @@ body {
   font-family: 'Inter', Arial, Helvetica, sans-serif;
 }
 
+.gradient-bg {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  transition: all 0.3s ease;
+}
 
 .font-sonsie {
   font-family: 'Sonsie One', cursive;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Project as ProjectType } from '@/lib/types';
 import Image from 'next/image';
+import TermHighlighter from './TermHighlighter';
 
 interface ProjectProps {
   project: ProjectType;
@@ -18,7 +19,9 @@ export default function Project({ project }: ProjectProps) {
 
       <section className="flex flex-col items-center md:items-start">
         <h1 className="project-title">{project.name}</h1>
-        <p className="paragraph mt-2">{project.description}</p>
+        <p className="paragraph mt-2">
+          <TermHighlighter>{project.description}</TermHighlighter>
+        </p>
       </section>
 
       <div className="mt-auto flex flex-col md:flex-row gap-3 md:gap-6 w-full">
