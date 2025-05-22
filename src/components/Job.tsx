@@ -1,5 +1,6 @@
 import React from 'react';
 import { Job as JobType } from '@/lib/types';
+import GradientText from './GradientText';
 
 interface JobProps {
   job: JobType;
@@ -14,8 +15,8 @@ export default function Job({ job }: JobProps) {
           <h2 className="subtitle">{job.location}</h2>
         </div>
         <div className="flex flex-col items-end">
-          <h1 className="job-title">{job.position}</h1>
-          <h2 className="subtitle">{job.period}</h2>
+          <h1 className="project-title">{job.position}</h1>
+          <h2 className="subtitle">{job.actual ? <GradientText>{job.period}</GradientText> : job.period}</h2>
         </div>
       </div>
       <div className="flex flex-col gap-4">

@@ -169,6 +169,7 @@ export const JOBS: Job[] = [
     position: 'Frontend Developer',
     location: 'San Francisco, California',
     period: 'August 2023 - Present',
+    actual: true,
     highlights: [
       {
         title: 'AI Interface Development & Performance Optimization',

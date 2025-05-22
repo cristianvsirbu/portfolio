@@ -17,7 +17,7 @@ export default function Project({ project }: ProjectProps) {
       />
 
       <section className="flex flex-col items-center md:items-start">
-        <h1 className="job-title">{project.name}</h1>
+        <h1 className="project-title">{project.name}</h1>
         <p className="paragraph mt-2">{project.description}</p>
       </section>
 
