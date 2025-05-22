@@ -9,11 +9,16 @@ export default function Page() {
   const sectionsRef = useRef<Record<string, HTMLElement | null>>({});
 
   useEffect(() => {
+    let debounceTimeout: NodeJS.Timeout | null = null;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
+            if (debounceTimeout) clearTimeout(debounceTimeout);
+            debounceTimeout = setTimeout(() => {
+              setActiveSection(entry.target.id);
+            }, 100);
           }
         });
       },
@@ -33,6 +38,7 @@ export default function Page() {
     const currentSections = { ...sectionsRef.current };
 
     return () => {
+      if (debounceTimeout) clearTimeout(debounceTimeout);
       Object.values(currentSections).forEach((el) => {
         if (el) observer.unobserve(el);
       });
