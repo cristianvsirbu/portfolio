@@ -23,3 +23,10 @@ export interface Job {
     content: string;
   }[];
 }
+
+export interface Section {
+  id: string;
+  name: string;
+  component: React.FC;
+  isSpecial?: boolean;
+}
