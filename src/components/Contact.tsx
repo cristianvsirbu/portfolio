@@ -66,17 +66,6 @@ const Contact = () => {
           </div>
         </div>
       </div>
-      <p className="w-full text-center font-medium text-xs text-[#86868B] mt-16 mb-4">
-        Built &amp;&amp; Designed with
-        <Image
-          src="/icons/misc/heart.svg"
-          alt="heart"
-          width={12}
-          height={12}
-          className="inline-block mx-1"
-        />
-        by Cristian Sîrbu
-      </p>
     </section>
   );
 };
