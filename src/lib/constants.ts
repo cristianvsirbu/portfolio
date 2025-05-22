@@ -1,5 +1,10 @@
+import Home from '@/components/Home';
 import { getCurrentYear } from './utils';
-import { Job, Project, Technology } from '@/lib/types';
+import { Job, Project, Section, Technology } from '@/lib/types';
+import About from '@/components/About';
+import Experience from '@/components/Experience';
+import Projects from '@/components/Projects';
+import Contact from '@/components/Contact';
 
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/cristianvsirbu/';
 export const GITHUB_URL = 'https://github.com/cristianvsirbu';
@@ -194,5 +199,34 @@ export const JOBS: Job[] = [
           'I’ve collaborated with designers and backend developers to deliver seamless solutions, ensuring pixel-perfect designs and smooth user experiences. My work includes integrating RESTful APIs, implementing  authentication systems, and optimizing applications for performance and  accessibility.',
       },
     ],
+  },
+];
+
+export const SECTIONS: Section[] = [
+  {
+    id: 'home',
+    name: 'Home',
+    component: Home,
+    isSpecial: true,
+  },
+  {
+    id: 'about',
+    name: 'About',
+    component: About,
+  },
+  {
+    id: 'experience',
+    name: 'Experience',
+    component: Experience,
+  },
+  {
+    id: 'projects',
+    name: 'Projects',
+    component: Projects,
+  },
+  {
+    id: 'contact',
+    name: 'Contact',
+    component: Contact,
   },
 ];
