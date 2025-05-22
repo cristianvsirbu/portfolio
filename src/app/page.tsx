@@ -4,7 +4,7 @@ import { SECTIONS } from '@/lib/constants';
 
 export default function Page() {
   return (
-    <main className="mx-auto max-w-[1200px]">
+    <div className="mx-auto max-w-[1200px]">
       {SECTIONS.map(({ id, component: Component }) => (
         <section
           key={id}
@@ -14,6 +14,6 @@ export default function Page() {
           <Component />
         </section>
       ))}
-    </main>
+    </div>
   );
 }
