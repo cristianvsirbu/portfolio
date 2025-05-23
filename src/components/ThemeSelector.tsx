@@ -8,7 +8,6 @@ export default function ThemeSelector() {
   const { currentTheme, setTheme } = useTheme();
   const [showThemes, setShowThemes] = useState(false);
   const [isLargeScreen, setIsLargeScreen] = useState(false);
-  const [isMobileScreen, setIsMobileScreen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   
@@ -33,7 +32,6 @@ export default function ThemeSelector() {
   useEffect(() => {
     const checkScreenSize = () => {
       setIsLargeScreen(window.innerWidth >= 1024);
-      setIsMobileScreen(window.innerWidth < 1024);
     };
 
     checkScreenSize();
@@ -107,7 +105,7 @@ export default function ThemeSelector() {
       </motion.button>
 
       <AnimatePresence>
-        {showThemes && !isMobileScreen && (
+        {showThemes && isLargeScreen && (
           <motion.div
             className={`absolute top-16 backdrop-blur-sm border-2 border-[#c9c9c9]/50 rounded-2xl p-3 flex flex-col gap-2 w-40 ${
               isLargeScreen ? 'left-0' : 'right-0'
@@ -154,7 +152,7 @@ export default function ThemeSelector() {
         )}
 
         {/* Mobile optimized theme selector */}
-        {showThemes && isMobileScreen && (
+        {showThemes && !isLargeScreen && (
           <motion.div
             className="fixed inset-x-0 bottom-0 pb-6 pt-4 px-4 backdrop-blur-md bg-black/80 border-t-2 border-[#c9c9c9]/50 z-50"
             initial={{ y: '100%' }}
