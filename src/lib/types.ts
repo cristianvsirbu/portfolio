@@ -8,6 +8,7 @@ export interface Project {
   name: string;
   description: string;
   icon: string;
+  isEmpty?: boolean;
   site?: string;
   repo?: string;
 }
@@ -17,7 +18,7 @@ export interface Job {
   position: string;
   location: string;
   period: string;
-  actual?: boolean;
+  isActual?: boolean;
   highlights: {
     title: string;
     content: string;

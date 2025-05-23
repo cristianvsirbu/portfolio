@@ -4,10 +4,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 import ThemeSelector from './ThemeSelector';
 import GradientText from './GradientText';
+import { useTheme } from '@/hooks/useTheme';
 
 export default function Navigation() {
   const { activeSection, navSections } = useActiveSection();
   const navRefs = useRef<{ [key: string]: HTMLAnchorElement | null }>({});
+  const { currentTheme } = useTheme();
   const [activeItemDimensions, setActiveItemDimensions] = useState<{
     width: number;
     height: number;
@@ -135,7 +137,10 @@ export default function Navigation() {
 
           <motion.a
             href="#resume"
-            className="px-4 h-7 flex items-center cursor-pointer gradient-bg rounded-full relative z-10"
+            className="px-4 h-7 flex items-center bg-secondary cursor-pointer rounded-full relative z-10"
+            style={{
+              backgroundColor: currentTheme.primaryColor,
+            }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

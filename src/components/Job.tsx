@@ -18,7 +18,7 @@ export default function Job({ job }: JobProps) {
         <div className="flex flex-col items-end">
           <h1 className="project-title">{job.position}</h1>
           <h2 className="subtitle">
-            {job.actual ? (
+            {job.isActual ? (
               <GradientText>{job.period}</GradientText>
             ) : (
               job.period

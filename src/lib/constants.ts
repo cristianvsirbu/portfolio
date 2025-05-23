@@ -158,6 +158,7 @@ export const PROJECTS: Project[] = [
   },
   {
     name: 'More to come...',
+    isEmpty: true,
     description: 'Coming soon-ish. Probably epic.',
     icon: '/icons/projects/empty_project.svg',
   },
@@ -169,7 +170,7 @@ export const JOBS: Job[] = [
     position: 'Frontend Developer',
     location: 'San Francisco, California',
     period: 'August 2023 - Present',
-    actual: true,
+    isActual: true,
     highlights: [
       {
         title: 'AI Interface Development & Performance Optimization',

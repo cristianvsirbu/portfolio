@@ -44,7 +44,7 @@ export default function TermHighlighter({
           <span
             key={index}
             style={{
-              backgroundImage: `linear-gradient(135deg, ${currentTheme.primaryColor}, ${currentTheme.secondaryColor})`,
+              backgroundColor: currentTheme.secondaryColor,
               WebkitBackgroundClip: 'text',
               backgroundClip: 'text',
               color: 'transparent',
