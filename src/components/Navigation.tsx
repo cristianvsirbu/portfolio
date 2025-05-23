@@ -77,29 +77,29 @@ export default function Navigation() {
   const mobileMenuVariants = {
     closed: {
       opacity: 0,
-      y: "-100%",
+      y: '-100%',
       transition: {
-        type: "spring",
+        type: 'spring',
         stiffness: 300,
-        damping: 30
-      }
+        damping: 30,
+      },
     },
     open: {
       opacity: 1,
       y: 0,
       transition: {
-        type: "spring",
+        type: 'spring',
         stiffness: 300,
         damping: 30,
         staggerChildren: 0.07,
-        delayChildren: 0.2
-      }
-    }
+        delayChildren: 0.2,
+      },
+    },
   };
 
   const mobileNavItemVariants = {
     closed: { opacity: 0, y: 20 },
-    open: { opacity: 1, y: 0 }
+    open: { opacity: 1, y: 0 },
   };
 
   return (
@@ -199,90 +199,120 @@ export default function Navigation() {
         </motion.div>
       </motion.nav>
 
-      {/* Mobile Navigation Header */}
-      <div className="flex md:hidden px-4 py-4 justify-between items-center backdrop-blur-sm">
-        <motion.a
-          href="#home"
-          className="rounded-full flex transition-all duration-150 items-center justify-center cursor-pointer h-10 w-10 font-sonsie text-2xl"
-          whileTap={{ scale: 0.95 }}
-          onClick={handleNavLinkClick}
-        >
-          {activeSection === 'home' ? (
-            <GradientText>C</GradientText>
-          ) : (
-            <span>C</span>
-          )}
-        </motion.a>
-        
-        {/* Hamburger Button */}
-        <button 
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="relative z-50 p-2"
-        >
-          <div className="flex flex-col justify-between w-6 h-5">
-            <motion.span 
-              animate={isMobileMenuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
-              className="h-0.5 w-full bg-current block transition-all duration-300"
-            />
-            <motion.span 
-              animate={isMobileMenuOpen ? { opacity: 0 } : { opacity: 1 }}
-              className="h-0.5 w-full bg-current block transition-all duration-300"
-            />
-            <motion.span 
-              animate={isMobileMenuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
-              className="h-0.5 w-full bg-current block transition-all duration-300"
-            />
-          </div>
-        </button>
-      </div>
-
-      {/* Mobile Menu Overlay */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div 
-            className="fixed inset-0 bg-black/95 backdrop-blur-md z-40 flex flex-col"
-            variants={mobileMenuVariants}
-            initial="closed"
-            animate="open"
-            exit="closed"
+      {/* Mobile Navigation with unified background */}
+      <motion.div
+        className="md:hidden fixed inset-x-0 top-0 backdrop-blur-sm bg-black/60 z-50 flex flex-col"
+        animate={{
+          height: isMobileMenuOpen ? '100vh' : '68px',
+        }}
+        transition={{
+          type: 'spring',
+          stiffness: 300,
+          damping: 30,
+        }}
+      >
+        {/* Mobile Header - Always visible */}
+        <div className="flex p-4 justify-between items-center relative">
+          <motion.a
+            href="#home"
+            className="rounded-full flex transition-all duration-150 items-center justify-center cursor-pointer h-10 w-10 font-sonsie text-2xl overflow-hidden"
+            whileTap={{ scale: 0.95 }}
+            onClick={handleNavLinkClick}
           >
-            <div className="flex flex-col items-center justify-center flex-1 pt-24 pb-16 px-8">
-              {navSections.map((section) => (
+            {activeSection === 'home' ? (
+              <GradientText className="flex items-center justify-center w-full h-full text-3xl">
+                C
+              </GradientText>
+            ) : (
+              <span className="flex items-center justify-center w-full h-full text-3xl">
+                C
+              </span>
+            )}
+          </motion.a>
+
+          {/* Hamburger Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="relative z-50 p-2"
+            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+          >
+            <div className="relative w-7 h-7">
+              <motion.span
+                animate={
+                  isMobileMenuOpen
+                    ? { top: '50%', y: '-50%', rotate: 45 }
+                    : { top: '0%', y: '0%', rotate: 0 }
+                }
+                className="absolute h-0.5 w-full bg-current block transition-all duration-300 origin-center"
+                style={{ height: '2px' }}
+              />
+              <motion.span
+                animate={isMobileMenuOpen ? { opacity: 0 } : { opacity: 1 }}
+                className="absolute top-1/2 -translate-y-1/2 h-0.5 w-full bg-current block transition-all duration-300"
+                style={{ height: '2px' }}
+              />
+              <motion.span
+                animate={
+                  isMobileMenuOpen
+                    ? { bottom: '50%', y: '50%', rotate: -45 }
+                    : { bottom: '0%', y: '0%', rotate: 0 }
+                }
+                className="absolute bottom-0 h-0.5 w-full bg-current block transition-all duration-300 origin-center"
+                style={{ height: '2px' }}
+              />
+            </div>
+          </button>
+        </div>
+
+        {/* Mobile Menu Content - Only visible when menu is open */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              className="flex-1 flex flex-col overflow-auto"
+              variants={mobileMenuVariants}
+              initial="closed"
+              animate="open"
+              exit="closed"
+            >
+              <div className="flex flex-col items-center justify-center flex-1 pt-8 pb-16 px-8">
+                {navSections.map((section) => (
+                  <motion.a
+                    href={`#${section.id}`}
+                    key={section.id}
+                    onClick={handleNavLinkClick}
+                    variants={mobileNavItemVariants}
+                    className="text-3xl font-medium py-5 border-b border-white/10 w-full text-center"
+                    style={{
+                      color:
+                        activeSection === section.id ? '#ffffff' : '#9ca3af',
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    {section.name}
+                  </motion.a>
+                ))}
+
                 <motion.a
-                  href={`#${section.id}`}
-                  key={section.id}
+                  href="#resume"
                   onClick={handleNavLinkClick}
                   variants={mobileNavItemVariants}
-                  className="text-3xl font-medium py-5 border-b border-gray-800 w-full text-center"
+                  className="mt-8 text-3xl font-medium py-3 px-12 rounded-full"
                   style={{
-                    color: activeSection === section.id ? '#ffffff' : '#9ca3af',
+                    backgroundColor: currentTheme.primaryColor,
                   }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  {section.name}
+                  Resume
                 </motion.a>
-              ))}
-              
-              <motion.a
-                href="#resume"
-                onClick={handleNavLinkClick}
-                variants={mobileNavItemVariants}
-                className="mt-8 text-3xl font-medium py-3 px-12 rounded-full"
-                style={{
-                  backgroundColor: currentTheme.primaryColor,
-                }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Resume
-              </motion.a>
-            </div>
-            
-            <div className="pb-8 flex justify-center">
-              <ThemeSelector />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              </div>
+
+              <div className="pb-8 flex justify-center">
+                <ThemeSelector />
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
     </header>
   );
 }

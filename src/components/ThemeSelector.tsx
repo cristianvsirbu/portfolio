@@ -157,7 +157,7 @@ export default function ThemeSelector() {
             exit={{ y: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
           >
-            <p className="text-center mb-4 text-white font-medium">Select Theme</p>
+            <p className="text-center mb-4 text-white font-medium">Themes</p>
             <motion.div 
               className="flex justify-center flex-wrap gap-4"
               initial={{ opacity: 0 }}
@@ -188,7 +188,7 @@ export default function ThemeSelector() {
                   >
                     {theme.id === currentTheme.id && (
                       <motion.div 
-                        className="w-3 h-3 bg-white rounded-full" 
+                        className="w-6 h-6 bg-black rounded-full" 
                         layoutId="themeIndicator" 
                       />
                     )}
