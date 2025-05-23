@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const Contact = () => {
   return (
-    <>
+    <section>
       <h1 className="title">Contact</h1>
       <h2 className="subtitle">Get In Touch:</h2>
       <div className="flex flex-col md:flex-row gap-8 lg:gap-16 mt-4">
@@ -66,7 +66,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-    </>
+    </section>
   );
 };
 

@@ -17,7 +17,7 @@ const About = () => {
   );
 
   return (
-    <>
+    <section>
       <h1 className="title">About Me</h1>
       <h2 className="subtitle">
         Hey there! My name is Cristian and I like building nice things for the
@@ -106,7 +106,7 @@ const About = () => {
           />
         </figure>
       </div>
-    </>
+    </section>
   );
 };
 
