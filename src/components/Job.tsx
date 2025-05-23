@@ -1,5 +1,7 @@
 import React from 'react';
 import { Job as JobType } from '@/lib/types';
+import GradientText from './GradientText';
+import TermHighlighter from './TermHighlighter';
 
 interface JobProps {
   job: JobType;
@@ -14,15 +16,23 @@ export default function Job({ job }: JobProps) {
           <h2 className="subtitle">{job.location}</h2>
         </div>
         <div className="flex flex-col items-end">
-          <h1 className="job-title">{job.position}</h1>
-          <h2 className="subtitle">{job.period}</h2>
+          <h1 className="project-title">{job.position}</h1>
+          <h2 className="subtitle">
+            {job.isActual ? (
+              <GradientText>{job.period}</GradientText>
+            ) : (
+              job.period
+            )}
+          </h2>
         </div>
       </div>
       <div className="flex flex-col gap-4">
         {job.highlights.map((highlight, index) => (
           <div key={index} className="flex flex-col gap-2">
             <h3 className="font-medium">{highlight.title}</h3>
-            <p className="paragraph">{highlight.content}</p>
+            <p className="paragraph">
+              <TermHighlighter>{highlight.content}</TermHighlighter>
+            </p>
           </div>
         ))}
       </div>

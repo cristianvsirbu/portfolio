@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Image from 'next/image';
 import Navigation from '@/components/Navigation';
+import { ThemeProvider } from '@/contexts/ThemeContext';
 
 export const metadata: Metadata = {
   title: 'Cristian Sîrbu',
@@ -16,6 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+      <ThemeProvider>
         <Navigation />
         <main>{children}</main>
         <footer className="w-full -mt-8 mb-4">
@@ -30,7 +32,8 @@ export default function RootLayout({
             />
             by Cristian Sîrbu
           </p>
-        </footer>
+          </footer>
+          </ThemeProvider>
       </body>
     </html>
   );

@@ -1,0 +1,132 @@
+'use client';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useTheme } from '@/hooks/useTheme';
+import { THEMES } from '@/lib/themes';
+import { useState, useEffect, useRef } from 'react';
+
+export default function ThemeSelector() {
+  const { currentTheme, setTheme } = useTheme();
+  const [showThemes, setShowThemes] = useState(false);
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  
+    useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        containerRef.current && 
+        !containerRef.current.contains(event.target as Node) && 
+        showThemes
+      ) {
+        setShowThemes(false);
+      }
+    };
+  
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showThemes]);
+
+  // Check screen size for responsive behavior
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024);
+    };
+
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
+
+  useEffect(() => {
+    if (showThemes) {
+      setIsAnimating(true);
+      // Animation duration: container (300ms) + last item delay (items × 50ms)
+      const animationDuration = 300 + THEMES.length * 50;
+      const timer = setTimeout(() => setIsAnimating(false), animationDuration);
+      return () => clearTimeout(timer);
+    }
+  }, [showThemes]);
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: -8 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0.1 + i * 0.05,
+        duration: 0.2,
+      },
+    }),
+    exit: {
+      opacity: 0,
+      y: -5,
+      transition: {
+        duration: 0.1,
+      },
+    },
+  };
+
+  return (
+    <div className="z-50 relative" ref={containerRef}>
+      <motion.button
+        className="rounded-full backdrop-blur-sm flex items-center justify-center cursor-pointer border-2 border-[#c9c9c9]/50 size-12"
+        onClick={() => setShowThemes(!showThemes)}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <div
+          aria-hidden="true"
+          className="rounded-full size-6"
+          style={{
+            background: `linear-gradient(135deg, ${currentTheme.primaryColor}, ${currentTheme.secondaryColor})`,
+          }}
+        ></div>
+      </motion.button>
+
+      <AnimatePresence>
+        {showThemes && (
+          <motion.div
+            className={`absolute top-16 backdrop-blur-sm border-2 border-[#c9c9c9]/50 rounded-2xl p-3 flex flex-col gap-2 w-40 ${
+              isLargeScreen ? 'left-0' : 'right-0'
+            }`}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+          >
+            {THEMES.map((theme, i) => (
+              <motion.button
+                key={theme.id}
+                variants={itemVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                custom={i}
+                className={`py-1 rounded-xl w-full flex items-center cursor-pointer gap-3`}
+                whileHover={!isAnimating ? { scale: 1.02 } : {}}
+                whileTap={!isAnimating ? { scale: 0.98 } : {}}
+                onClick={() => {
+                  setTheme(theme.id);
+                  setShowThemes(false);
+                }}
+              >
+                <div
+                  className="rounded-full size-6 flex-shrink-0"
+                  style={{
+                    background: `linear-gradient(135deg, ${theme.primaryColor}, ${theme.secondaryColor})`,
+                    border:
+                      theme.id === currentTheme.id ? `3px solid white` : 'none',
+                  }}
+                />
+                <span className="text-white font-medium text-sm">
+                  {theme.name}
+                </span>
+              </motion.button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}

@@ -6,6 +6,7 @@ import {
   PROGRAMMING_YEARS,
   TECHNOLOGIES,
 } from '@/lib/constants';
+import TermHighlighter from './TermHighlighter';
 
 const About = () => {
   const mainTechnologies = TECHNOLOGIES.filter(
@@ -36,13 +37,15 @@ const About = () => {
       </figure>
 
       <p className="paragraph mt-5">
-        I’ve been coding professionally for {PROFESSIONAL_YEARS} years, but my
-        love for building web interfaces started back in university{' '}
-        {PROGRAMMING_YEARS} years ago - when I got completely absorbed by
-        vanilla CSS and the magic of making a webpage look just right. Today, I
-        work with React, Next.js, and TypeScript, but that same obsession with
-        detail sticks around: I want interfaces that feel effortless, load fast,
-        and — above all — just make sense.
+        <TermHighlighter>
+          I’ve been coding professionally for {PROFESSIONAL_YEARS} years, but my
+          love for building web interfaces started back in university{' '}
+          {PROGRAMMING_YEARS} years ago - when I got completely absorbed by
+          vanilla CSS and the magic of making a webpage look just right. Today,
+          I work with React, Next.js, and TypeScript, but that same obsession
+          with detail sticks around: I want interfaces that feel effortless,
+          load fast, and — above all — just make sense.
+        </TermHighlighter>
       </p>
 
       <div className="flex justify-between items-start">
