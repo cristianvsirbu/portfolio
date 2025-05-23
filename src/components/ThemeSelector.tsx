@@ -133,13 +133,18 @@ export default function ThemeSelector() {
                 }}
               >
                 <div
-                  className="rounded-full size-6 flex-shrink-0"
+                  className="rounded-full size-6 flex-shrink-0 relative flex items-center justify-center"
                   style={{
                     background: `linear-gradient(135deg, ${theme.primaryColor}, ${theme.secondaryColor})`,
-                    border:
-                      theme.id === currentTheme.id ? `3px solid white` : 'none',
                   }}
-                />
+                >
+                  {theme.id === currentTheme.id && (
+                    <motion.div 
+                      className="w-3 h-3 bg-black rounded-full" 
+                      layoutId="desktopThemeIndicator" 
+                    />
+                  )}
+                </div>
                 <span className="text-white font-medium text-sm">
                   {theme.name}
                 </span>

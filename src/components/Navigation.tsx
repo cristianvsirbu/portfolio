@@ -53,9 +53,16 @@ export default function Navigation() {
     }
   }, [activeSection]);
 
-  // Close mobile menu when clicking a navigation link
-  const handleNavLinkClick = () => {
+  const handleNavLinkClick = (e?: React.MouseEvent, sectionId?: string) => {
     setIsMobileMenuOpen(false);
+    if (sectionId) {
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
   };
 
   const container = {
@@ -211,13 +218,13 @@ export default function Navigation() {
           damping: 30,
         }}
       >
-        {/* Mobile Header - Always visible */}
+        {/* Mobile Header */}
         <div className="flex p-4 justify-between items-center relative">
           <motion.a
             href="#home"
             className="rounded-full flex transition-all duration-150 items-center justify-center cursor-pointer h-10 w-10 font-sonsie text-2xl overflow-hidden"
             whileTap={{ scale: 0.95 }}
-            onClick={handleNavLinkClick}
+            onClick={(e) => handleNavLinkClick(e, 'home')}
           >
             {activeSection === 'home' ? (
               <GradientText className="flex items-center justify-center w-full h-full text-3xl">
@@ -264,7 +271,7 @@ export default function Navigation() {
           </button>
         </div>
 
-        {/* Mobile Menu Content - Only visible when menu is open */}
+        {/* Mobile Menu Content */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
@@ -279,7 +286,7 @@ export default function Navigation() {
                   <motion.a
                     href={`#${section.id}`}
                     key={section.id}
-                    onClick={handleNavLinkClick}
+                    onClick={(e) => handleNavLinkClick(e, section.id)}
                     variants={mobileNavItemVariants}
                     className="text-3xl font-medium py-5 border-b border-white/10 w-full text-center"
                     style={{
@@ -294,7 +301,7 @@ export default function Navigation() {
 
                 <motion.a
                   href="#resume"
-                  onClick={handleNavLinkClick}
+                  onClick={(e) => handleNavLinkClick(e, 'resume')}
                   variants={mobileNavItemVariants}
                   className="mt-8 text-3xl font-medium py-3 px-12 rounded-full"
                   style={{
