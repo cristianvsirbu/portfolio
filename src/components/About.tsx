@@ -17,7 +17,7 @@ const About = () => {
   );
 
   return (
-    <section className="px-4 md:px-6">
+    <section>
       <h1 className="title">About Me</h1>
       <h2 className="subtitle">
         Hey there! My name is Cristian and I like building nice things for the
@@ -36,12 +36,12 @@ const About = () => {
         />
       </figure>
 
-      <p className="paragraph mt-5">
+      <p className="paragraph mt-5 text-center md:text-left">
         <TermHighlighter>
           I’ve been coding professionally for {PROFESSIONAL_YEARS} years, but my
           love for building web interfaces started back in university{' '}
           {PROGRAMMING_YEARS} years ago - when I got completely absorbed by
-          vanilla CSS and the magic of making a webpage look just right. Today,
+          Vanilla CSS and the magic of making a webpage look just right. Today,
           I work with React, Next.js, and TypeScript, but that same obsession
           with detail sticks around: I want interfaces that feel effortless,
           load fast, and — above all — just make sense.

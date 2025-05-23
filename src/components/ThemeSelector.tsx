@@ -11,7 +11,7 @@ export default function ThemeSelector() {
   const [isAnimating, setIsAnimating] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   
-    useEffect(() => {
+  useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
         containerRef.current && 
@@ -68,6 +68,25 @@ export default function ThemeSelector() {
     },
   };
 
+  const mobileItemVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: (i: number) => ({
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delay: 0.1 + i * 0.05,
+        duration: 0.2,
+      },
+    }),
+    exit: {
+      opacity: 0,
+      scale: 0.8,
+      transition: {
+        duration: 0.1,
+      },
+    },
+  };
+
   return (
     <div className="z-50 relative" ref={containerRef}>
       <motion.button
@@ -86,7 +105,7 @@ export default function ThemeSelector() {
       </motion.button>
 
       <AnimatePresence>
-        {showThemes && (
+        {showThemes && isLargeScreen && (
           <motion.div
             className={`absolute top-16 backdrop-blur-sm border-2 border-[#c9c9c9]/50 rounded-2xl p-3 flex flex-col gap-2 w-40 ${
               isLargeScreen ? 'left-0' : 'right-0'
@@ -112,18 +131,77 @@ export default function ThemeSelector() {
                 }}
               >
                 <div
-                  className="rounded-full size-6 flex-shrink-0"
+                  className="rounded-full size-6 flex-shrink-0 relative flex items-center justify-center"
                   style={{
                     background: `linear-gradient(135deg, ${theme.primaryColor}, ${theme.secondaryColor})`,
-                    border:
-                      theme.id === currentTheme.id ? `3px solid white` : 'none',
                   }}
-                />
+                >
+                  {theme.id === currentTheme.id && (
+                    <motion.div 
+                      className="w-3 h-3 bg-black rounded-full" 
+                      layoutId="desktopThemeIndicator" 
+                    />
+                  )}
+                </div>
                 <span className="text-white font-medium text-sm">
                   {theme.name}
                 </span>
               </motion.button>
             ))}
+          </motion.div>
+        )}
+
+        {/* Mobile optimized theme selector */}
+        {showThemes && !isLargeScreen && (
+          <motion.div
+            className="fixed inset-x-0 bottom-0 pb-6 pt-4 px-4 backdrop-blur-md bg-black/80 border-t-2 border-[#c9c9c9]/50 z-50"
+            initial={{ y: '100%' }}
+            animate={{ y: 0 }}
+            exit={{ y: '100%' }}
+            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+          >
+            <p className="text-center mb-4 text-white font-medium">Themes</p>
+            <motion.div 
+              className="flex justify-center flex-wrap gap-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+            >
+              {THEMES.map((theme, i) => (
+                <motion.button
+                  key={theme.id}
+                  variants={mobileItemVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  custom={i}
+                  className="flex flex-col items-center gap-2"
+                  onClick={() => {
+                    setTheme(theme.id);
+                    setShowThemes(false);
+                  }}
+                >
+                  <motion.div
+                    className="rounded-full size-14 flex items-center justify-center"
+                    style={{
+                      background: `linear-gradient(135deg, ${theme.primaryColor}, ${theme.secondaryColor})`,
+                    }}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {theme.id === currentTheme.id && (
+                      <motion.div 
+                        className="w-6 h-6 bg-black rounded-full" 
+                        layoutId="themeIndicator" 
+                      />
+                    )}
+                  </motion.div>
+                  <span className="text-white text-xs">
+                    {theme.name}
+                  </span>
+                </motion.button>
+              ))}
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

@@ -4,12 +4,12 @@ import Image from 'next/image';
 
 const Contact = () => {
   return (
-    <section className="px-4 md:px-6">
+    <section>
       <h1 className="title">Contact</h1>
       <h2 className="subtitle">Get In Touch:</h2>
-      <div className="flex flex-col md:flex-row gap-16 mt-4">
-        <div className="flex flex-col gap-4 w-full md:max-w-1/2">
-          <p className="paragraph">
+      <div className="flex flex-col md:flex-row gap-8 lg:gap-16 mt-4">
+        <div className="flex flex-col items-center lg:items-start gap-4 w-full lg:max-w-1/2">
+          <p className="paragraph text-center lg:text-left">
             Feel free to drop me a message — whether it&apos;s a question,
             feedback, or just to say hi. My inbox is always open, and I’ll get
             back to you as soon as I can!
@@ -27,12 +27,12 @@ const Contact = () => {
             <span>Say Hello</span>
           </a>
         </div>
-        <div className="flex flex-col gap-4 w-full md:max-w-1/2">
-          <p className="paragraph">
+        <div className="flex flex-col items-center lg:items-start gap-4 w-full lg:max-w-1/2">
+          <p className="paragraph text-center lg:text-left">
             You can also find me on GitHub and LinkedIn if you&apos;d like to
             connect or check out more of what I’m up to.
           </p>
-          <div className="flex gap-4 justify-center md:justify-start">
+          <div className="flex gap-4 justify-center lg:justify-start">
             <a
               href={GITHUB_URL}
               target="_blank"

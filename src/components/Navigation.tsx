@@ -15,6 +15,19 @@ export default function Navigation() {
     height: number;
     left: number;
   } | null>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
 
   useEffect(() => {
     if (
@@ -40,6 +53,18 @@ export default function Navigation() {
     }
   }, [activeSection]);
 
+  const handleNavLinkClick = (e?: React.MouseEvent, sectionId?: string) => {
+    setIsMobileMenuOpen(false);
+    if (sectionId) {
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  };
+
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -56,10 +81,39 @@ export default function Navigation() {
     show: { y: 0, opacity: 1, transition: { type: 'spring' } },
   };
 
+  const mobileMenuVariants = {
+    closed: {
+      opacity: 0,
+      y: '-100%',
+      transition: {
+        type: 'spring',
+        stiffness: 300,
+        damping: 30,
+      },
+    },
+    open: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: 'spring',
+        stiffness: 300,
+        damping: 30,
+        staggerChildren: 0.07,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const mobileNavItemVariants = {
+    closed: { opacity: 0, y: 20 },
+    open: { opacity: 1, y: 0 },
+  };
+
   return (
     <header className="sticky top-0 z-50">
+      {/* Desktop Navigation */}
       <motion.nav
-        className="py-4 flex gap-6 justify-center"
+        className="py-4 hidden lg:flex gap-6 justify-center"
         variants={container}
         initial="hidden"
         animate="show"
@@ -71,11 +125,11 @@ export default function Navigation() {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
-          {activeSection === 'home' ? (
-            <GradientText>C</GradientText>
-          ) : (
-            <span>C</span>
-          )}
+          <GradientText
+            className={`${activeSection === 'home' ? 'text-transparent' : 'text-white'}`}
+          >
+            C
+          </GradientText>
         </motion.a>
 
         <motion.div
@@ -151,6 +205,117 @@ export default function Navigation() {
           <ThemeSelector />
         </motion.div>
       </motion.nav>
+
+      {/* Mobile Navigation with unified background */}
+      <motion.div
+        className="lg:hidden fixed inset-x-0 top-0 backdrop-blur-sm bg-black/60 z-50 flex flex-col"
+        animate={{
+          height: isMobileMenuOpen ? '100vh' : '68px',
+        }}
+        transition={{
+          type: 'spring',
+          stiffness: 300,
+          damping: 30,
+        }}
+      >
+        {/* Mobile Header */}
+        <div className="flex p-4 justify-between items-center relative">
+          <motion.a
+            href="#home"
+            className="rounded-full flex transition-all duration-150 items-center justify-center cursor-pointer h-10 w-10 font-sonsie text-2xl overflow-hidden"
+            whileTap={{ scale: 0.95 }}
+            onClick={(e) => handleNavLinkClick(e, 'home')}
+          >
+            <GradientText
+              className={`flex items-center justify-center w-full h-full text-3xl ${activeSection === 'home' ? 'text-transparent' : 'text-white'}`}
+            >
+              C
+            </GradientText>
+          </motion.a>
+
+          {/* Hamburger Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="relative z-50 p-2"
+            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+          >
+            <div className="relative w-6 h-6">
+              <motion.span
+                animate={
+                  isMobileMenuOpen
+                    ? { top: '50%', y: '-50%', rotate: 45 }
+                    : { top: '0%', y: '0%', rotate: 0 }
+                }
+                className="absolute h-0.5 w-full bg-current block transition-all duration-300 origin-center"
+                style={{ height: '2px' }}
+              />
+              <motion.span
+                animate={isMobileMenuOpen ? { opacity: 0 } : { opacity: 1 }}
+                className="absolute top-1/2 -translate-y-1/2 h-0.5 w-full bg-current block transition-all duration-300"
+                style={{ height: '2px' }}
+              />
+              <motion.span
+                animate={
+                  isMobileMenuOpen
+                    ? { bottom: '50%', y: '50%', rotate: -45 }
+                    : { bottom: '0%', y: '0%', rotate: 0 }
+                }
+                className="absolute bottom-0 h-0.5 w-full bg-current block transition-all duration-300 origin-center"
+                style={{ height: '2px' }}
+              />
+            </div>
+          </button>
+        </div>
+
+        {/* Mobile Menu Content */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              className="flex-1 flex flex-col overflow-auto"
+              variants={mobileMenuVariants}
+              initial="closed"
+              animate="open"
+              exit="closed"
+            >
+              <div className="flex flex-col items-center justify-center flex-1 pt-8 pb-16 px-8">
+                {navSections.map((section) => (
+                  <motion.a
+                    href={`#${section.id}`}
+                    key={section.id}
+                    onClick={(e) => handleNavLinkClick(e, section.id)}
+                    variants={mobileNavItemVariants}
+                    className="text-3xl font-medium py-5 border-b border-white/10 w-full text-center"
+                    style={{
+                      color:
+                        activeSection === section.id ? '#ffffff' : '#9ca3af',
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    {section.name}
+                  </motion.a>
+                ))}
+
+                <motion.a
+                  href="#resume"
+                  onClick={(e) => handleNavLinkClick(e, 'resume')}
+                  variants={mobileNavItemVariants}
+                  className="mt-8 text-3xl font-medium py-3 px-12 rounded-full"
+                  style={{
+                    backgroundColor: currentTheme.primaryColor,
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Resume
+                </motion.a>
+              </div>
+
+              <div className="pb-8 flex justify-center">
+                <ThemeSelector />
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
     </header>
   );
 }

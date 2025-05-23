@@ -4,7 +4,7 @@ import { JOBS } from '@/lib/constants';
 
 const Experience = () => {
   return (
-    <section className="px-4 md:px-6">
+    <section>
       <h1 className="title">Experience</h1>
       <h2 className="subtitle">Where I&apos;ve Worked:</h2>
       <div className="flex flex-col md:flex-row gap-16 mt-8">

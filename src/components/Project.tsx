@@ -9,7 +9,7 @@ interface ProjectProps {
 
 export default function Project({ project }: ProjectProps) {
   return (
-    <div className="flex flex-col gap-8 w-full h-full items-center md:items-start">
+    <div className="flex flex-col gap-8 w-full h-full items-center lg:items-start">
       <Image
         src={project.icon}
         alt={`${project.name} icon`}
@@ -18,14 +18,14 @@ export default function Project({ project }: ProjectProps) {
         className={`${project.isEmpty ? 'gradient-bg rounded-[20px]' : ''}`}
       />
 
-      <section className="flex flex-col items-center md:items-start">
+      <section className="flex flex-col items-center lg:items-start">
         <h1 className="project-title">{project.name}</h1>
-        <p className="paragraph mt-2">
+        <p className="paragraph mt-2 text-center lg:text-left">
           <TermHighlighter>{project.description}</TermHighlighter>
         </p>
       </section>
 
-      <div className="mt-auto flex flex-col md:flex-row gap-3 md:gap-6 w-full">
+      <div className="mt-auto flex flex-col lg:flex-row gap-3 md:gap-6 w-full">
         {project.site && (
           <a
             href={project.site}
