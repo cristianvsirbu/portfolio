@@ -125,11 +125,11 @@ export default function Navigation() {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
-          {activeSection === 'home' ? (
-            <GradientText>C</GradientText>
-          ) : (
-            <span>C</span>
-          )}
+          <GradientText
+            className={`${activeSection === 'home' ? 'text-transparent' : 'text-white'}`}
+          >
+            C
+          </GradientText>
         </motion.a>
 
         <motion.div
@@ -226,15 +226,11 @@ export default function Navigation() {
             whileTap={{ scale: 0.95 }}
             onClick={(e) => handleNavLinkClick(e, 'home')}
           >
-            {activeSection === 'home' ? (
-              <GradientText className="flex items-center justify-center w-full h-full text-3xl">
-                C
-              </GradientText>
-            ) : (
-              <span className="flex items-center justify-center w-full h-full text-3xl">
-                C
-              </span>
-            )}
+            <GradientText
+              className={`flex items-center justify-center w-full h-full text-3xl ${activeSection === 'home' ? 'text-transparent' : 'text-white'}`}
+            >
+              C
+            </GradientText>
           </motion.a>
 
           {/* Hamburger Button */}
