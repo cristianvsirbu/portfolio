@@ -198,7 +198,7 @@ export const JOBS: Job[] = [
       {
         title: 'Collaborative Solutions Delivery',
         content:
-          'I’ve collaborated with designers and backend developers to deliver seamless solutions, ensuring pixel-perfect designs and smooth user experiences. My work includes integrating REST APIs, implementing  authentication systems, and optimizing applications for performance and  accessibility.',
+          'I’ve collaborated with designers and backend developers to deliver seamless solutions, ensuring pixel-perfect designs and smooth user experiences. My work includes integrating REST APIs, implementing authentication systems, and optimizing applications for performance and accessibility.',
       },
     ],
   },
