@@ -33,7 +33,7 @@ export default function ThemeSelector() {
   useEffect(() => {
     const checkScreenSize = () => {
       setIsLargeScreen(window.innerWidth >= 1024);
-      setIsMobileScreen(window.innerWidth < 768);
+      setIsMobileScreen(window.innerWidth < 1024);
     };
 
     checkScreenSize();

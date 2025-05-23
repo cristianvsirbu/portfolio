@@ -17,7 +17,7 @@ const About = () => {
   );
 
   return (
-    <section className="px-6 md:px-8">
+    <section>
       <h1 className="title">About Me</h1>
       <h2 className="subtitle">
         Hey there! My name is Cristian and I like building nice things for the

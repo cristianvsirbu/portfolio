@@ -113,7 +113,7 @@ export default function Navigation() {
     <header className="sticky top-0 z-50">
       {/* Desktop Navigation */}
       <motion.nav
-        className="py-4 hidden md:flex gap-6 justify-center"
+        className="py-4 hidden lg:flex gap-6 justify-center"
         variants={container}
         initial="hidden"
         animate="show"
@@ -208,7 +208,7 @@ export default function Navigation() {
 
       {/* Mobile Navigation with unified background */}
       <motion.div
-        className="md:hidden fixed inset-x-0 top-0 backdrop-blur-sm bg-black/60 z-50 flex flex-col"
+        className="lg:hidden fixed inset-x-0 top-0 backdrop-blur-sm bg-black/60 z-50 flex flex-col"
         animate={{
           height: isMobileMenuOpen ? '100vh' : '68px',
         }}
