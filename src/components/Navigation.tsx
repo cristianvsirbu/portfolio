@@ -236,7 +236,7 @@ export default function Navigation() {
             className="relative z-50 p-2"
             aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
           >
-            <div className="relative w-7 h-7">
+            <div className="relative w-6 h-6">
               <motion.span
                 animate={
                   isMobileMenuOpen
