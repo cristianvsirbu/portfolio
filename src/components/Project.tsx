@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+import React, { memo, useMemo } from 'react';
+import { motion } from 'framer-motion';
 import { Project as ProjectType } from '@/lib/types';
 import Image from 'next/image';
 import TermHighlighter from './TermHighlighter';
@@ -7,15 +9,46 @@ interface ProjectProps {
   project: ProjectType;
 }
 
-export default function Project({ project }: ProjectProps) {
+const containerVariants = {
+  hidden: { 
+    opacity: 0, 
+    y: 30
+  },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut"
+    },
+  },
+};
+
+const Project = memo(function Project({ project }: ProjectProps) {
+  // Memoize class names to prevent recalculation
+  const imageClassName = useMemo(() => 
+    project.isEmpty ? 'project-gradient-bg rounded-[20px]' : '', 
+    [project.isEmpty]
+  );
+
   return (
-    <div className="flex flex-col gap-8 w-full h-full items-center lg:items-start">
+    <motion.div 
+      className="flex flex-col gap-8 w-full h-full items-center lg:items-start"
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      style={{ willChange: 'auto' }}
+    >
       <Image
         src={project.icon}
         alt={`${project.name} icon`}
         width={150}
         height={150}
-        className={`${project.isEmpty ? 'gradient-bg rounded-[20px]' : ''}`}
+        className={imageClassName}
+        loading="lazy"
+        decoding="async"
+        priority={false}
       />
 
       <section className="flex flex-col items-center lg:items-start">
@@ -27,11 +60,14 @@ export default function Project({ project }: ProjectProps) {
 
       <div className="mt-auto flex flex-col lg:flex-row gap-3 md:gap-6 w-full">
         {project.site && (
-          <a
+          <motion.a
             href={project.site}
             target="_blank"
             rel="noopener noreferrer"
             className="site-button"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ duration: 0.1 }}
           >
             <Image
               src="/icons/misc/external_link.svg"
@@ -40,15 +76,18 @@ export default function Project({ project }: ProjectProps) {
               height={18}
             />
             <span>Visit Site</span>
-          </a>
+          </motion.a>
         )}
 
         {project.repo && (
-          <a
+          <motion.a
             href={project.repo}
             target="_blank"
             rel="noopener noreferrer"
             className="repo-button"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ duration: 0.1 }}
           >
             <Image
               src="/icons/misc/github_white.svg"
@@ -57,9 +96,23 @@ export default function Project({ project }: ProjectProps) {
               height={18}
             />
             <span>GitHub Repo</span>
-          </a>
+          </motion.a>
         )}
       </div>
-    </div>
+    </motion.div>
   );
-}
+}, (prevProps, nextProps) => {
+  // Perform a shallow comparison of relevant fields
+  const prevProject = prevProps.project;
+  const nextProject = nextProps.project;
+  return (
+    prevProject.isEmpty === nextProject.isEmpty &&
+    prevProject.icon === nextProject.icon &&
+    prevProject.name === nextProject.name &&
+    prevProject.description === nextProject.description &&
+    prevProject.site === nextProject.site &&
+    prevProject.repo === nextProject.repo
+  );
+});
+
+export default Project;

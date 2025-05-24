@@ -1,22 +1,92 @@
+'use client';
 import React from 'react';
+import { motion } from 'framer-motion';
 import { EMAIL, GITHUB_URL, LINKEDIN_URL } from '@/lib/constants';
 import Image from 'next/image';
 
 const Contact = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 30
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        type: 'spring',
+        stiffness: 300,
+        damping: 25,
+        duration: 0.6,
+      },
+    },
+  };
+
+  const socialVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const socialItemVariants = {
+    hidden: { 
+      opacity: 0, 
+      scale: 0.8,
+      y: 20
+    },
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      y: 0,
+      transition: {
+        type: 'spring',
+        stiffness: 400,
+        damping: 20,
+      },
+    },
+  };
+
   return (
     <section>
       <h1 className="title">Contact</h1>
       <h2 className="subtitle">Get In Touch:</h2>
-      <div className="flex flex-col md:flex-row gap-8 lg:gap-16 mt-4">
-        <div className="flex flex-col items-center lg:items-start gap-4 w-full lg:max-w-1/2">
+      <motion.div 
+        className="flex flex-col md:flex-row gap-8 lg:gap-16 mt-4"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <motion.div 
+          className="flex flex-col items-center lg:items-start gap-4 w-full lg:max-w-1/2"
+          variants={itemVariants}
+        >
           <p className="paragraph text-center lg:text-left">
             Feel free to drop me a message — whether it&apos;s a question,
-            feedback, or just to say hi. My inbox is always open, and I’ll get
+            feedback, or just to say hi. My inbox is always open, and I&apos;ll get
             back to you as soon as I can!
           </p>
-          <a
+          <motion.a
             href={`mailto:${EMAIL}`}
             className="site-button w-full md:max-w-1/2"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             <Image
               src="/icons/misc/mail.svg"
@@ -25,19 +95,31 @@ const Contact = () => {
               height={18}
             />
             <span>Say Hello</span>
-          </a>
-        </div>
-        <div className="flex flex-col items-center lg:items-start gap-4 w-full lg:max-w-1/2">
+          </motion.a>
+        </motion.div>
+        <motion.div 
+          className="flex flex-col items-center lg:items-start gap-4 w-full lg:max-w-1/2"
+          variants={itemVariants}
+        >
           <p className="paragraph text-center lg:text-left">
             You can also find me on GitHub and LinkedIn if you&apos;d like to
-            connect or check out more of what I’m up to.
+            connect or check out more of what I&apos;m up to.
           </p>
-          <div className="flex gap-4 justify-center lg:justify-start">
-            <a
+          <motion.div 
+            className="flex gap-4 justify-center lg:justify-start"
+            variants={socialVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <motion.a
               href={GITHUB_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="flex flex-col items-center gap-1"
+              variants={socialItemVariants}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
             >
               <Image
                 src="/icons/technologies/additional/github.svg"
@@ -47,12 +129,15 @@ const Contact = () => {
                 className="cursor-pointer"
               />
               <span className="text-white text-xs text-center">GitHub</span>
-            </a>
-            <a
+            </motion.a>
+            <motion.a
               href={LINKEDIN_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="flex flex-col items-center gap-1"
+              variants={socialItemVariants}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
             >
               <Image
                 src="/icons/social/linkedin.svg"
@@ -62,10 +147,10 @@ const Contact = () => {
                 className="cursor-pointer"
               />
               <span className="text-white text-xs text-center">LinkedIn</span>
-            </a>
-          </div>
-        </div>
-      </div>
+            </motion.a>
+          </motion.div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };
