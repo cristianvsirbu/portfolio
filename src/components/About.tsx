@@ -58,6 +58,26 @@ const About = () => {
     },
   };
 
+  const profilePicVariants = {
+    hidden: { 
+      opacity: 0, 
+      scale: 0.8,
+      y: 30
+    },
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.25, 0.1, 0.25, 1],
+        type: 'spring',
+        stiffness: 200,
+        damping: 25,
+      },
+    },
+  };
+
   return (
     <section>
       <h1 className="title">About Me</h1>
@@ -67,7 +87,13 @@ const About = () => {
       </h2>
 
       {/* Profile picture - visible on mobile between subtitle and paragraph */}
-      <figure className="md:hidden my-6 flex justify-center">
+      <motion.figure 
+        className="md:hidden my-6 flex justify-center"
+        variants={profilePicVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
         <Image
           priority={true}
           src={PROFILE_PIC}
@@ -76,7 +102,7 @@ const About = () => {
           height={280}
           className="rounded-lg"
         />
-      </figure>
+      </motion.figure>
 
       <p className="paragraph mt-5 text-center md:text-left">
         <TermHighlighter>
@@ -156,7 +182,13 @@ const About = () => {
         </section>
 
         {/* Profile picture - visible on desktop only */}
-        <figure className="hidden md:block mt-8">
+        <motion.figure 
+          className="hidden md:block mt-8"
+          variants={profilePicVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
           <Image
             priority={false}
             src={PROFILE_PIC}
@@ -164,7 +196,7 @@ const About = () => {
             width={400}
             height={400}
           />
-        </figure>
+        </motion.figure>
       </div>
     </section>
   );
