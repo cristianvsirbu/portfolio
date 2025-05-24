@@ -102,8 +102,17 @@ const Project = memo(function Project({ project }: ProjectProps) {
     </motion.div>
   );
 }, (prevProps, nextProps) => {
-  // Use a shallow equality check for memoization
-  return JSON.stringify(prevProps.project) === JSON.stringify(nextProps.project);
+  // Perform a shallow comparison of relevant fields
+  const prevProject = prevProps.project;
+  const nextProject = nextProps.project;
+  return (
+    prevProject.isEmpty === nextProject.isEmpty &&
+    prevProject.icon === nextProject.icon &&
+    prevProject.name === nextProject.name &&
+    prevProject.description === nextProject.description &&
+    prevProject.site === nextProject.site &&
+    prevProject.repo === nextProject.repo
+  );
 });
 
 export default Project;
