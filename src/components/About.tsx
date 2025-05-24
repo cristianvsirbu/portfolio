@@ -1,5 +1,7 @@
+'use client';
 import React from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import {
   PROFESSIONAL_YEARS,
   PROFILE_PIC,
@@ -15,6 +17,46 @@ const About = () => {
   const additionalTechnologies = TECHNOLOGIES.filter(
     (technology) => technology.category === 'additional'
   );
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 20,
+      scale: 0.8 
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      scale: 1,
+      transition: {
+        type: 'spring',
+        stiffness: 300,
+        damping: 20,
+      },
+    },
+  };
+
+  const additionalContainerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05,
+        delayChildren: 0.3,
+      },
+    },
+  };
 
   return (
     <section>
@@ -38,7 +80,7 @@ const About = () => {
 
       <p className="paragraph mt-5 text-center md:text-left">
         <TermHighlighter>
-          I’ve been coding professionally for {PROFESSIONAL_YEARS} years, but my
+          I&apos;ve been coding professionally for {PROFESSIONAL_YEARS} years, but my
           love for building web interfaces started back in university{' '}
           {PROGRAMMING_YEARS} years ago - when I got completely absorbed by
           Vanilla CSS and the magic of making a webpage look just right. Today,
@@ -52,11 +94,20 @@ const About = () => {
         <section className="w-full md:w-1/2 flex flex-col gap-8 mt-8">
           <section>
             <h2 className="subtitle">My Everyday Stack:</h2>
-            <ul className="w-full flex mt-4 flex-wrap gap-3 sm:gap-4 md:gap-5 justify-center sm:justify-start">
+            <motion.ul 
+              className="w-full flex mt-4 flex-wrap gap-3 sm:gap-4 md:gap-5 justify-center sm:justify-start"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+            >
               {mainTechnologies.map((tech) => (
-                <li
+                <motion.li
                   key={tech.name}
                   className="flex flex-col items-center gap-1 sm:gap-2 w-[80px] sm:w-auto"
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   <Image
                     src={tech.icon}
@@ -67,18 +118,27 @@ const About = () => {
                   <span className="text-white text-xs text-center">
                     {tech.name}
                   </span>
-                </li>
+                </motion.li>
               ))}
-            </ul>
+            </motion.ul>
           </section>
 
           <section>
             <h2 className="subtitle">Additional Technologies:</h2>
-            <ul className="grid grid-cols-6 lg:grid-cols-9 gap-4 mt-4">
+            <motion.ul 
+              className="grid grid-cols-6 lg:grid-cols-9 gap-4 mt-4"
+              variants={additionalContainerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+            >
               {additionalTechnologies.map((tech) => (
-                <li
+                <motion.li
                   key={tech.name}
                   className="flex flex-col items-center gap-1"
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   <Image
                     src={tech.icon}
@@ -89,9 +149,9 @@ const About = () => {
                   <span className="text-white text-[10px] text-center">
                     {tech.name}
                   </span>
-                </li>
+                </motion.li>
               ))}
-            </ul>
+            </motion.ul>
           </section>
         </section>
 
