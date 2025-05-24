@@ -204,3 +204,103 @@ body {
 .text-secondary {
   color: var(--secondary);
 }
+
+.glitch-animation {
+  position: relative;
+  animation: glitchTrigger 5s infinite;
+}
+
+.glitch-animation::before,
+.glitch-animation::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.glitch-animation::before {
+  color: var(--secondary);
+  z-index: -1;
+  animation: glitchBefore 5s infinite;
+}
+
+.glitch-animation::after {
+  color: var(--secondary);
+  z-index: -2;
+  animation: glitchAfter 5s infinite;
+}
+
+@keyframes glitchTrigger {
+  0%,
+  96%,
+  100% {
+    transform: none;
+  }
+  97% {
+    transform: translate(2px, 0);
+  }
+  98% {
+    transform: translate(-4px, 4px);
+  }
+  99% {
+    transform: translate(3px, -2px);
+  }
+}
+
+@keyframes glitchBefore {
+  0%,
+  96%,
+  100% {
+    opacity: 0;
+    transform: none;
+  }
+  97% {
+    opacity: 0.8;
+    transform: translate(-3px, 0);
+  }
+  98% {
+    opacity: 0.8;
+    transform: translate(3px, -3px);
+  }
+  99% {
+    opacity: 0.8;
+    transform: translate(-2px, 3px);
+  }
+}
+
+@keyframes glitchAfter {
+  0%,
+  96%,
+  100% {
+    opacity: 0;
+    transform: none;
+  }
+  97% {
+    opacity: 0.6;
+    transform: translate(2px, 0);
+  }
+  98% {
+    opacity: 0.6;
+    transform: translate(-2px, 2px);
+  }
+  99% {
+    opacity: 0.6;
+    transform: translate(2px, -2px);
+  }
+}
+
+@keyframes blink {
+
+  0%,
+  50% {
+    opacity: 1;
+  }
+
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
