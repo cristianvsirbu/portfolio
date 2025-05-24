@@ -15,7 +15,7 @@ export default function Project({ project }: ProjectProps) {
         alt={`${project.name} icon`}
         width={150}
         height={150}
-        className={`${project.isEmpty ? 'gradient-bg rounded-[20px]' : ''}`}
+        className={`${project.isEmpty ? 'project-gradient-bg rounded-[20px]' : ''}`}
       />
 
       <section className="flex flex-col items-center lg:items-start">

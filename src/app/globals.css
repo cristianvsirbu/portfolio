@@ -32,6 +32,13 @@ body {
   transition: all 0.3s ease;
 }
 
+.project-gradient-bg {
+  background: linear-gradient(135deg,
+      color-mix(in srgb, var(--primary) 50%, transparent),
+      color-mix(in srgb, var(--secondary) 50%, transparent));
+  transition: all 0.3s ease;
+}
+
 .font-sonsie {
   font-family: 'Sonsie One', cursive;
 }
