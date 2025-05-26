@@ -190,13 +190,14 @@ export default function Navigation() {
           ))}
 
           <motion.a
-            href="#resume"
+            href="/cv/cv-cristiansirbu.pdf"
             className="px-4 h-7 flex items-center bg-secondary cursor-pointer rounded-full relative z-10"
             style={{
               backgroundColor: currentTheme.primaryColor,
             }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            download
           >
             Resume
           </motion.a>
@@ -296,14 +297,14 @@ export default function Navigation() {
                 ))}
 
                 <motion.a
-                  href="#resume"
-                  onClick={(e) => handleNavLinkClick(e, 'resume')}
+                  href="/cv/cv-cristiansirbu.pdf"
                   variants={mobileNavItemVariants}
                   className="mt-8 text-3xl font-medium py-3 px-12 rounded-full"
                   style={{
                     backgroundColor: currentTheme.primaryColor,
                   }}
                   whileTap={{ scale: 0.98 }}
+                  download
                 >
                   Resume
                 </motion.a>
