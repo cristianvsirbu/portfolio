@@ -13,6 +13,7 @@ const Home = () => {
         <span
           data-text="pixels"
           className="font-jersey glitch-animation text-primary text-2xl md:text-6xl lg:text-7xl"
+          style={{ willChange: 'auto' }}
         >
           pixels
         </span>{' '}

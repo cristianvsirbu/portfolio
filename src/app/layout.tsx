@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Navigation from '@/components/Navigation';
 import { ThemeProvider } from '@/contexts/ThemeContext';
 import { Analytics } from '@vercel/analytics/next';
+import { inter, jersey20, geistMono, sonsie } from '@/lib/fonts';
 
 export const metadata: Metadata = {
   title: 'Cristian Sîrbu',
@@ -16,8 +17,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
+    <html
+      lang="en"
+      className={`${inter.variable} ${jersey20.variable} ${geistMono.variable} ${sonsie.variable}`}
+    >
+      <body className={inter.className}>
         <ThemeProvider>
           <Navigation />
           <main>{children}</main>
