@@ -32,7 +32,7 @@ const Project = memo(function Project({ project }: ProjectProps) {
   );
 
   return (
-    <motion.div 
+    <motion.div
       className="flex flex-col gap-8 w-full h-full items-center lg:items-start"
       variants={containerVariants}
       initial="hidden"
@@ -49,6 +49,7 @@ const Project = memo(function Project({ project }: ProjectProps) {
         loading="lazy"
         decoding="async"
         priority={false}
+        unoptimized={true}
       />
 
       <section className="flex flex-col items-center lg:items-start">

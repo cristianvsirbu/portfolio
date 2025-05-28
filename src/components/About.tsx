@@ -87,7 +87,7 @@ const About = () => {
       </h2>
 
       {/* Profile picture - visible on mobile between subtitle and paragraph */}
-      <motion.figure 
+      <motion.figure
         className="md:hidden my-6 flex justify-center"
         variants={profilePicVariants}
         initial="hidden"
@@ -106,8 +106,8 @@ const About = () => {
 
       <p className="paragraph mt-5 text-center md:text-left">
         <TermHighlighter>
-          I&apos;ve been coding professionally for {PROFESSIONAL_YEARS} years, but my
-          love for building web interfaces started back in university{' '}
+          I&apos;ve been coding professionally for {PROFESSIONAL_YEARS} years,
+          but my love for building web interfaces started back in university{' '}
           {PROGRAMMING_YEARS} years ago - when I got completely absorbed by
           Vanilla CSS and the magic of making a webpage look just right. Today,
           I work with React, Next.js, and TypeScript, but that same obsession
@@ -120,7 +120,7 @@ const About = () => {
         <section className="w-full md:w-1/2 flex flex-col gap-8 mt-8">
           <section>
             <h2 className="subtitle">My Everyday Stack:</h2>
-            <motion.ul 
+            <motion.ul
               className="w-full flex mt-4 flex-wrap gap-3 sm:gap-4 md:gap-5 justify-center sm:justify-start"
               variants={containerVariants}
               initial="hidden"
@@ -140,6 +140,7 @@ const About = () => {
                     alt={`${tech.name} icon`}
                     width={64}
                     height={64}
+                    unoptimized={true}
                   />
                   <span className="text-white text-xs text-center">
                     {tech.name}
@@ -151,7 +152,7 @@ const About = () => {
 
           <section>
             <h2 className="subtitle">Additional Technologies:</h2>
-            <motion.ul 
+            <motion.ul
               className="grid grid-cols-6 lg:grid-cols-9 gap-4 mt-4"
               variants={additionalContainerVariants}
               initial="hidden"
@@ -171,6 +172,7 @@ const About = () => {
                     alt={`${tech.name} icon`}
                     width={48}
                     height={48}
+                    unoptimized={true}
                   />
                   <span className="text-white text-[10px] text-center">
                     {tech.name}
@@ -182,7 +184,7 @@ const About = () => {
         </section>
 
         {/* Profile picture - visible on desktop only */}
-        <motion.figure 
+        <motion.figure
           className="hidden md:block mt-8"
           variants={profilePicVariants}
           initial="hidden"
