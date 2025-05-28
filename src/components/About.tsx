@@ -140,7 +140,6 @@ const About = () => {
                     alt={`${tech.name} icon`}
                     width={64}
                     height={64}
-                    unoptimized={true}
                   />
                   <span className="text-white text-xs text-center">
                     {tech.name}
@@ -172,7 +171,6 @@ const About = () => {
                     alt={`${tech.name} icon`}
                     width={48}
                     height={48}
-                    unoptimized={true}
                   />
                   <span className="text-white text-[10px] text-center">
                     {tech.name}
