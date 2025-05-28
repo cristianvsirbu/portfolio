@@ -49,7 +49,6 @@ const Project = memo(function Project({ project }: ProjectProps) {
         loading="lazy"
         decoding="async"
         priority={false}
-        unoptimized={true}
       />
 
       <section className="flex flex-col items-center lg:items-start">
