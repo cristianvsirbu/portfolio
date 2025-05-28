@@ -122,7 +122,7 @@ const Contact = () => {
               whileTap={{ scale: 0.9 }}
             >
               <Image
-                src="/icons/technologies/additional/github.svg"
+                src="/icons/technologies/additional/github.png"
                 alt="GitHub profile"
                 width={56}
                 height={56}
@@ -140,7 +140,7 @@ const Contact = () => {
               whileTap={{ scale: 0.9 }}
             >
               <Image
-                src="/icons/social/linkedin.svg"
+                src="/icons/social/linkedin.png"
                 alt="LinkedIn profile"
                 width={56}
                 height={56}
