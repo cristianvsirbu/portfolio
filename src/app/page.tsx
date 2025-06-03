@@ -15,11 +15,7 @@ export default function Page() {
   return (
     <div className="mx-auto max-w-[1200px] px-6 md:px-8">
       {SECTIONS.map(({ id, component: Component }) => (
-        <section
-          key={id}
-          id={id}
-          className={getContainerClasses(id)}
-        >
+        <section key={id} id={id} className={getContainerClasses(id)}>
           <Component />
         </section>
       ))}

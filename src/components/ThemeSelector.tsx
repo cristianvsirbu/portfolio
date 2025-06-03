@@ -10,18 +10,18 @@ export default function ThemeSelector() {
   const [isLargeScreen, setIsLargeScreen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
-        containerRef.current && 
-        !containerRef.current.contains(event.target as Node) && 
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node) &&
         showThemes
       ) {
         setShowThemes(false);
       }
     };
-  
+
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
@@ -137,9 +137,9 @@ export default function ThemeSelector() {
                   }}
                 >
                   {theme.id === currentTheme.id && (
-                    <motion.div 
-                      className="w-3 h-3 bg-black rounded-full" 
-                      layoutId="desktopThemeIndicator" 
+                    <motion.div
+                      className="w-3 h-3 bg-black rounded-full"
+                      layoutId="desktopThemeIndicator"
                     />
                   )}
                 </div>
@@ -161,7 +161,7 @@ export default function ThemeSelector() {
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
           >
             <p className="text-center mb-4 text-white font-medium">Themes</p>
-            <motion.div 
+            <motion.div
               className="flex justify-center flex-wrap gap-4"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -190,15 +190,13 @@ export default function ThemeSelector() {
                     whileTap={{ scale: 0.95 }}
                   >
                     {theme.id === currentTheme.id && (
-                      <motion.div 
-                        className="w-6 h-6 bg-black rounded-full" 
-                        layoutId="themeIndicator" 
+                      <motion.div
+                        className="w-6 h-6 bg-black rounded-full"
+                        layoutId="themeIndicator"
                       />
                     )}
                   </motion.div>
-                  <span className="text-white text-xs">
-                    {theme.name}
-                  </span>
+                  <span className="text-white text-xs">{theme.name}</span>
                 </motion.button>
               ))}
             </motion.div>

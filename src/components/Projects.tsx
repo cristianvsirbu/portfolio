@@ -4,30 +4,29 @@ import { motion } from 'framer-motion';
 import Project from './Project';
 import { PROJECTS } from '@/lib/constants';
 
-
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1, 
+      staggerChildren: 0.1,
       delayChildren: 0.05,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { 
-    opacity: 0, 
-    y: 20
+  hidden: {
+    opacity: 0,
+    y: 20,
   },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     y: 0,
     transition: {
       duration: 0.3,
-      ease: "easeOut"
-    }
+      ease: 'easeOut',
+    },
   },
 };
 
@@ -36,7 +35,7 @@ const Projects = memo(function Projects() {
     <section>
       <h1 className="title">Projects</h1>
       <h2 className="subtitle">Stuff I&apos;ve Made:</h2>
-      <motion.div 
+      <motion.div
         className="grid grid-cols-1 md:grid-cols-2 gap-16 mt-8"
         variants={containerVariants}
         initial="hidden"
@@ -44,10 +43,7 @@ const Projects = memo(function Projects() {
         viewport={{ once: true, amount: 0.1 }}
       >
         {PROJECTS.map((project) => (
-          <motion.div
-            key={project.name}
-            variants={itemVariants}
-          >
+          <motion.div key={project.name} variants={itemVariants}>
             <Project project={project} />
           </motion.div>
         ))}

@@ -13,9 +13,10 @@ const ESCAPED_TERMS = HIGHLIGHT_TERMS.map((term) =>
   term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 ).sort((a, b) => b.length - a.length);
 
-const PATTERN = ESCAPED_TERMS.length > 0 
-  ? new RegExp(`(${ESCAPED_TERMS.join('|')})`, 'g')
-  : null;
+const PATTERN =
+  ESCAPED_TERMS.length > 0
+    ? new RegExp(`(${ESCAPED_TERMS.join('|')})`, 'g')
+    : null;
 
 const useProcessCache = () => {
   const cacheRef = React.useRef(new Map<string, ReactNode>());
@@ -35,7 +36,7 @@ export default function TermHighlighter({
     }
     // Use cache to avoid re-processing
     const cacheKey = `${children}:${currentTheme.secondaryColor}`;
-    
+
     if (processCache.has(cacheKey)) {
       return processCache.get(cacheKey);
     }
@@ -71,7 +72,7 @@ export default function TermHighlighter({
       processCache.clear();
     }
     processCache.set(cacheKey, result);
-    
+
     return result;
   }, [children, currentTheme.secondaryColor, processCache]);
 

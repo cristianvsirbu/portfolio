@@ -1,5 +1,11 @@
 'use client';
-import React, { createContext, useState, useEffect, useCallback, useMemo } from 'react';
+import React, {
+  createContext,
+  useState,
+  useEffect,
+  useCallback,
+  useMemo,
+} from 'react';
 import { THEMES } from '@/lib/themes';
 import { ThemeColor } from '@/lib/types';
 
@@ -19,19 +25,22 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const [currentTheme, setCurrentTheme] = useState<ThemeColor>(THEMES[0]);
   const [isChanging, setIsChanging] = useState(false);
 
-  const setTheme = useCallback((themeId: string) => {
-    const theme = THEMES.find((t) => t.id === themeId);
-    if (theme && theme.id !== currentTheme.id) {
-      setIsChanging(true);
-      setCurrentTheme(theme);
+  const setTheme = useCallback(
+    (themeId: string) => {
+      const theme = THEMES.find((t) => t.id === themeId);
+      if (theme && theme.id !== currentTheme.id) {
+        setIsChanging(true);
+        setCurrentTheme(theme);
 
-      // Store user preference
-      localStorage.setItem('theme', themeId);
+        // Store user preference
+        localStorage.setItem('theme', themeId);
 
-      // Allow time for animation
-      setTimeout(() => setIsChanging(false), 1000);
-    }
-  }, [currentTheme.id]);
+        // Allow time for animation
+        setTimeout(() => setIsChanging(false), 1000);
+      }
+    },
+    [currentTheme.id]
+  );
 
   // Apply theme to CSS variables
   useEffect(() => {
@@ -57,11 +66,14 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   // Memoize context value to prevent unnecessary re-renders
-  const contextValue = useMemo(() => ({
-    currentTheme,
-    setTheme,
-    isChanging,
-  }), [currentTheme, setTheme, isChanging]);
+  const contextValue = useMemo(
+    () => ({
+      currentTheme,
+      setTheme,
+      isChanging,
+    }),
+    [currentTheme, setTheme, isChanging]
+  );
 
   return (
     <ThemeContext.Provider value={contextValue}>

@@ -17,12 +17,12 @@ const Contact = () => {
   };
 
   const itemVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 30
+    hidden: {
+      opacity: 0,
+      y: 30,
     },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: {
         type: 'spring',
@@ -45,13 +45,13 @@ const Contact = () => {
   };
 
   const socialItemVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       scale: 0.8,
-      y: 20
+      y: 20,
     },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       scale: 1,
       y: 0,
       transition: {
@@ -66,21 +66,21 @@ const Contact = () => {
     <section>
       <h1 className="title">Contact</h1>
       <h2 className="subtitle">Get In Touch:</h2>
-      <motion.div 
+      <motion.div
         className="flex flex-col md:flex-row gap-8 lg:gap-16 mt-4"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
       >
-        <motion.div 
+        <motion.div
           className="flex flex-col items-center lg:items-start gap-4 w-full lg:max-w-1/2"
           variants={itemVariants}
         >
           <p className="paragraph text-center lg:text-left">
             Feel free to drop me a message — whether it&apos;s a question,
-            feedback, or just to say hi. My inbox is always open, and I&apos;ll get
-            back to you as soon as I can!
+            feedback, or just to say hi. My inbox is always open, and I&apos;ll
+            get back to you as soon as I can!
           </p>
           <motion.a
             href={`mailto:${EMAIL}`}
@@ -97,7 +97,7 @@ const Contact = () => {
             <span>Say Hello</span>
           </motion.a>
         </motion.div>
-        <motion.div 
+        <motion.div
           className="flex flex-col items-center lg:items-start gap-4 w-full lg:max-w-1/2"
           variants={itemVariants}
         >
@@ -105,7 +105,7 @@ const Contact = () => {
             You can also find me on GitHub and LinkedIn if you&apos;d like to
             connect or check out more of what I&apos;m up to.
           </p>
-          <motion.div 
+          <motion.div
             className="flex gap-4 justify-center lg:justify-start"
             variants={socialVariants}
             initial="hidden"
