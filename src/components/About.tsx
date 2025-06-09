@@ -112,7 +112,7 @@ const About = () => {
           Vanilla CSS and the magic of making a webpage look just right. Today,
           I work with React, Next.js, and TypeScript, but that same obsession
           with detail sticks around: I want interfaces that feel effortless,
-          load fast, and — above all — just make sense.
+          load fast, and above all - just make sense.
         </TermHighlighter>
       </p>
 
