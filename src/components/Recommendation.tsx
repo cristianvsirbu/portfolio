@@ -34,6 +34,30 @@ const recommendationVariants = {
   }),
 };
 
+const textVariants = {
+  hidden: { opacity: 0, x: -20 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: 'spring',
+      stiffness: 400,
+      damping: 30,
+    },
+  },
+};
+
+const textContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
+    },
+  },
+};
+
 const Recommendation = memo(function Recommendation({
   recommendation,
   index = 0,
@@ -61,14 +85,28 @@ const Recommendation = memo(function Recommendation({
         <h2 className="subtitle">{recommendation.occupation}</h2>
       </div>
 
-      <div className="paragraph">
-        <h3 className="mb-2 font-medium text-white text-center lg:text-left">
+      <motion.div
+        className="flex flex-col gap-2"
+        variants={textContainerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <motion.h3 
+          className="mb-2 font-medium text-white text-center lg:text-left"
+          variants={textVariants}
+        >
           {recommendation.relationship}
-        </h3>
-        <TermHighlighter>
-          <p className="text-center lg:text-left">{recommendation.text}</p>
-        </TermHighlighter>
-      </div>
+        </motion.h3>
+        <motion.div 
+          className="paragraph text-center lg:text-left"
+          variants={textVariants}
+        >
+          <TermHighlighter>
+            {recommendation.text}
+          </TermHighlighter>
+        </motion.div>
+      </motion.div>
     </motion.div>
   );
 });
