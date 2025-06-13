@@ -31,4 +31,6 @@ export const HIGHLIGHT_TERMS = [
   'Draco3D',
   'Recharts',
   'serverless function',
+  'UX',
+  'UI',
 ];
