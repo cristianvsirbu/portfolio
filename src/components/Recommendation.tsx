@@ -62,8 +62,12 @@ const Recommendation = memo(function Recommendation({
       </div>
 
       <div className="paragraph">
-      <h3 className='mb-2 font-medium text-white'>{recommendation.relationship}</h3>
-        <TermHighlighter>{recommendation.text}</TermHighlighter>
+        <h3 className="mb-2 font-medium text-white text-center lg:text-left">
+          {recommendation.relationship}
+        </h3>
+        <TermHighlighter>
+          <p className="text-center lg:text-left">{recommendation.text}</p>
+        </TermHighlighter>
       </div>
     </motion.div>
   );
