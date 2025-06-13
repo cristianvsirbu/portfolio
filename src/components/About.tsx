@@ -200,7 +200,7 @@ const About = () => {
           />
         </motion.figure>
       </div>
-      <section className="mt-12">
+      <section className="mt-8">
         <h2 className="subtitle">What people say about me:</h2>
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 gap-16 mt-4"
