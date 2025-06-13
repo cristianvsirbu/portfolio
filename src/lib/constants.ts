@@ -232,3 +232,38 @@ export const SECTIONS: Section[] = [
     component: Contact,
   },
 ];
+export const RECOMMENDATIONS = [
+  {
+    text: "Cristian is a standout frontend engineer with a rare blend of creativity and technical precision. His keen eye for design and UX elevates his work, ensuring interfaces are not just functional but intuitive and polished. Whether working with React, Next.js, or TailwindCSS, Cristian tackles challenges with a methodical approach, consistently improving his solutions through feedback and iteration.\n\nWhat sets Cristian apart is his growth mindset—he absorbs new concepts quickly and applies them with care. His code reflects thoughtfulness and scalability, and his collaborative attitude makes him a valuable team player. I've seen him transform complex problems into elegant solutions, and his dedication to craftsmanship is evident in every project.\n\nWithout hesitation, I'd recommend Cristian for any frontend role. He's the kind of developer who not only meets expectations but raises the bar for those around him.",
+    relationship:
+      "Alain was senior to Cristian but didn't manage Cristian directly",
+    name: 'Alain Denzler',
+    occupation:
+      'Founder @ getitAI | AI-First Entrepreneur | Reimagining Commerce for the Age of AI | Exited SaaS Founder',
+    profile_url: 'https://www.linkedin.com/in/alaindenzler/',
+  },
+  {
+    text: "I was one of the founders of getitAI while Cristian was a frontend developer there. What always struck me about him was his ability to communicate clearly, understand feedback, and take action. He was always a pleasure to work with, and during our time working together, I saw tremendous growth in his technical ability and attention to detail. While it can at times be difficult for a non-technical PM to work with a developer, that wasn't the case here. Cristian was always willing to spend extra time clarifying an ask that I did not communicate clearly, and would proactively approach me with his own suggestions.\n\nI highly recommend working with Cristian if given the opportunity. I know I would do so again.",
+    relationship:
+      "Michael was senior to Cristian but didn't manage Cristian directly",
+    name: 'Michael Greenberg',
+    occupation:
+      'Entrepreneur in Residence @ Press On Ventures | Consulting on AI Workflow Optimizations | ex-Google, Meta, Samsung',
+    profile_url: 'https://www.linkedin.com/in/michael-c-greenberg/',
+  },
+  {
+    text: 'Cristian has an eye for design and UX. He made tremendous progress in his ability to tackle hard problems in programming. I can without a doubt recommend Cristian for any frontend engineering job in the world.',
+    relationship: 'Patrick managed Cristian directly',
+    name: 'Patrick Lauber',
+    occupation:
+      'I Build Full-Full-Stack Systems | Front to Back, Data to AI | Creator of django-cms',
+    profile_url: 'https://www.linkedin.com/in/patricklauber/',
+  },
+  {
+    text: "I had the pleasure of working with Cristian Sîrbu and was impressed by both his attentiveness and the steady progress he made as a Junior Frontend Engineer. During our time together, Cristian worked with technologies like Next.js, React, and CSS, and he consistently demonstrated a solid understanding of the tools and concepts required to build modern, responsive user interfaces.\n\nCristian approached each task with care and focus, delivering good results and showing a clear eagerness to grow. He was quick to grasp new concepts and always open to feedback, applying it thoughtfully to improve the quality and maintainability of his code. His work was reliable and steadily improved over time, reflecting both curiosity and commitment.\n\nCristian's technical foundation, coupled with his positive attitude and growth mindset, make him a strong addition to any frontend team. I'm confident he'll continue to evolve and bring increasing value wherever he contributes.",
+    relationship: 'Lio managed Cristian directly',
+    name: 'Lio Mendonca',
+    occupation: 'Founder | experienced fullstack developer',
+    profile_url: 'https://www.linkedin.com/in/lio-mendonca/',
+  },
+];
