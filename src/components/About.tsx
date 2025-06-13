@@ -6,9 +6,11 @@ import {
   PROFESSIONAL_YEARS,
   PROFILE_PIC,
   PROGRAMMING_YEARS,
+  RECOMMENDATIONS,
   TECHNOLOGIES,
 } from '@/lib/constants';
 import TermHighlighter from './TermHighlighter';
+import Recommendation from './Recommendation';
 
 const About = () => {
   const mainTechnologies = TECHNOLOGIES.filter(
@@ -198,6 +200,33 @@ const About = () => {
           />
         </motion.figure>
       </div>
+      <section className="mt-12">
+        <h2 className="subtitle">What people say about me:</h2>
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 gap-16 mt-4"
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.15,
+                delayChildren: 0.1,
+              },
+            },
+          }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+        >
+          {RECOMMENDATIONS.map((recommendation, index) => (
+            <Recommendation
+              key={recommendation.name}
+              recommendation={recommendation}
+              index={index}
+            />
+          ))}
+        </motion.div>
+      </section>
     </section>
   );
 };
