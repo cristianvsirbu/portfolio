@@ -25,7 +25,7 @@ const Home = () => {
           </span>
         </span>
       </h1>
-      <p className="text-sm md:text-md lg:text-xl max-w-[300px] md:max-w-[600px] lg:max-w-[1000px] text-[#86868B] text-center mt-2 px-4 leading-relaxed">
+      <p className="text-md lg:text-xl max-w-[300px] md:max-w-[600px] lg:max-w-[1000px] text-[#86868B] text-center mt-2 px-4 leading-relaxed">
         Frontend dev who crafts seamless web experiences with React, clean code,
         and a touch of creative magic. I obsess over the details - from buttery
         animations to maintainable code, because great interfaces should feel as
