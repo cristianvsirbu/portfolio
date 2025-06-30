@@ -190,7 +190,7 @@ export default function Navigation() {
           ))}
 
           <motion.a
-            href="/cv/cv-cristiansirbu.pdf"
+            href="/cv/CV-CRISTIAN-SIRBU.pdf"
             className="px-4 h-7 flex items-center bg-secondary cursor-pointer rounded-full relative z-10"
             style={{
               backgroundColor: currentTheme.primaryColor,
