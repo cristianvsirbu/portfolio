@@ -17,6 +17,8 @@ export const HIGHLIGHT_TERMS = [
   'SCSS',
   'DaisyUI/Tailwind',
   'Vite',
+  'Vitest',
+  'Playwright',
   'Zustand',
   'React Flow',
   'Fetch API',
@@ -33,4 +35,5 @@ export const HIGHLIGHT_TERMS = [
   'serverless function',
   'UX',
   'UI',
+  'Illustrator',
 ];

@@ -157,6 +157,14 @@ export const PROJECTS: Project[] = [
     repo: 'https://github.com/cristianvsirbu/password-generator',
   },
   {
+    name: 'Auth System',
+    description:
+      'A comprehensive authentication system built with React 19 and TypeScript, providing multiple authentication methods in a responsive and user-friendly interface. Features email verification with 6-digit PIN, anonymous access with 16-digit codes, and Google OAuth. Includes smart input detection, form validation, toast notifications, and protected routes with localStorage persistence. Built with Vite 6, Tailwind CSS 4, and includes comprehensive testing with Vitest and Playwright.',
+    icon: '/icons/projects/auth_system.png',
+    site: '',
+    repo: 'https://github.com/cristianvsirbu/auth-system',
+  },
+  {
     name: 'More to come...',
     isEmpty: true,
     description: 'Coming soon-ish. Probably epic.',
