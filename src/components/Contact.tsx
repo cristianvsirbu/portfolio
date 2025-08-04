@@ -17,18 +17,14 @@ const Contact = () => {
   };
 
   const itemVariants = {
-    hidden: {
-      opacity: 0,
-      y: 30,
-    },
+    hidden: { opacity: 0, x: -20 },
     visible: {
       opacity: 1,
-      y: 0,
+      x: 0,
       transition: {
         type: 'spring',
-        stiffness: 300,
-        damping: 25,
-        duration: 0.6,
+        stiffness: 400,
+        damping: 30,
       },
     },
   };
@@ -45,19 +41,14 @@ const Contact = () => {
   };
 
   const socialItemVariants = {
-    hidden: {
-      opacity: 0,
-      scale: 0.8,
-      y: 20,
-    },
+    hidden: { opacity: 0, x: -20 },
     visible: {
       opacity: 1,
-      scale: 1,
-      y: 0,
+      x: 0,
       transition: {
         type: 'spring',
         stiffness: 400,
-        damping: 20,
+        damping: 30,
       },
     },
   };
