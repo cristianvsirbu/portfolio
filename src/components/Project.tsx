@@ -7,25 +7,67 @@ import TermHighlighter from './TermHighlighter';
 
 interface ProjectProps {
   project: ProjectType;
+  index?: number;
 }
 
-const containerVariants = {
+const projectVariants = {
   hidden: {
     opacity: 0,
-    y: 30,
+    y: 50,
+    scale: 0.95,
   },
   visible: {
     opacity: 1,
     y: 0,
+    scale: 1,
     transition: {
-      duration: 0.5,
-      ease: 'easeOut',
+      type: 'spring',
+      stiffness: 300,
+      damping: 25,
+      duration: 0.6,
+    },
+  },
+};
+
+const imageVariants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      type: 'spring',
+      stiffness: 400,
+      damping: 30,
+    },
+  },
+};
+
+const contentVariants = {
+  hidden: { opacity: 0, x: -20 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: 'spring',
+      stiffness: 400,
+      damping: 30,
+    },
+  },
+};
+
+const projectContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
     },
   },
 };
 
 const Project = memo(
-  function Project({ project }: ProjectProps) {
+  function Project({ project, index = 0 }: ProjectProps) {
     // Memoize class names to prevent recalculation
     const imageClassName = useMemo(
       () => (project.isEmpty ? 'project-gradient-bg rounded-[20px]' : ''),
@@ -35,71 +77,87 @@ const Project = memo(
     return (
       <motion.div
         className="flex flex-col gap-8 w-full h-full items-center lg:items-start"
-        variants={containerVariants}
+        variants={projectVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
-        style={{ willChange: 'auto' }}
+        custom={index}
       >
-        <Image
-          src={project.icon}
-          alt={`${project.name} icon`}
-          width={150}
-          height={150}
-          className={imageClassName}
-          loading="lazy"
-          decoding="async"
-          priority={false}
-        />
+        <motion.div
+          variants={projectContainerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          className="flex flex-col gap-8 w-full h-full items-center lg:items-start"
+        >
+          <motion.div variants={imageVariants}>
+            <Image
+              src={project.icon}
+              alt={`${project.name} icon`}
+              width={150}
+              height={150}
+              className={imageClassName}
+              loading="lazy"
+              decoding="async"
+              priority={false}
+            />
+          </motion.div>
 
-        <section className="flex flex-col items-center lg:items-start">
-          <h1 className="project-title">{project.name}</h1>
-          <p className="paragraph mt-2 text-center lg:text-left">
-            <TermHighlighter>{project.description}</TermHighlighter>
-          </p>
-        </section>
+          <motion.section 
+            className="flex flex-col items-center lg:items-start"
+            variants={contentVariants}
+          >
+            <h1 className="project-title">{project.name}</h1>
+            <p className="paragraph mt-2 text-center lg:text-left">
+              <TermHighlighter>{project.description}</TermHighlighter>
+            </p>
+          </motion.section>
 
-        <div className="mt-auto flex flex-col lg:flex-row gap-3 md:gap-6 w-full">
-          {project.site && (
-            <motion.a
-              href={project.site}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="site-button"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ duration: 0.1 }}
-            >
-              <Image
-                src="/icons/misc/external_link.svg"
-                alt={`Open ${project.name} site`}
-                width={18}
-                height={18}
-              />
-              <span>Visit Site</span>
-            </motion.a>
-          )}
+          <motion.div 
+            className="mt-auto flex flex-col lg:flex-row gap-3 md:gap-6 w-full"
+            variants={contentVariants}
+          >
+            {project.site && (
+              <motion.a
+                href={project.site}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="site-button"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.1 }}
+              >
+                <Image
+                  src="/icons/misc/external_link.svg"
+                  alt={`Open ${project.name} site`}
+                  width={18}
+                  height={18}
+                />
+                <span>Visit Site</span>
+              </motion.a>
+            )}
 
-          {project.repo && (
-            <motion.a
-              href={project.repo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="repo-button"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ duration: 0.1 }}
-            >
-              <Image
-                src="/icons/misc/github_white.svg"
-                alt={`Open ${project.name} GitHub repo`}
-                width={18}
-                height={18}
-              />
-              <span>GitHub Repo</span>
-            </motion.a>
-          )}
-        </div>
+            {project.repo && (
+              <motion.a
+                href={project.repo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="repo-button"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.1 }}
+              >
+                <Image
+                  src="/icons/misc/github_white.svg"
+                  alt={`Open ${project.name} GitHub repo`}
+                  width={18}
+                  height={18}
+                />
+                <span>GitHub Repo</span>
+              </motion.a>
+            )}
+          </motion.div>
+        </motion.div>
       </motion.div>
     );
   },
@@ -113,7 +171,8 @@ const Project = memo(
       prevProject.name === nextProject.name &&
       prevProject.description === nextProject.description &&
       prevProject.site === nextProject.site &&
-      prevProject.repo === nextProject.repo
+      prevProject.repo === nextProject.repo &&
+      prevProps.index === nextProps.index
     );
   }
 );
