@@ -178,10 +178,11 @@ export default function Navigation() {
               style={{
                 color: activeSection === section.id ? '#ffffff' : '#9ca3af',
               }}
+              transition={{ duration: 0.1, type: 'tween' }}
               whileHover={{
-                scale: 1.05,
-                color: 'rgba(255, 255, 255, 0.9)',
-                transition: { duration: 0.2 },
+                scale: 1.1,
+                color: 'rgba(255, 255, 255, 1)',
+                transition: { duration: 0.1, type: 'tween', stiffness: 300 },
               }}
               whileTap={{ scale: 0.95 }}
             >
