@@ -90,7 +90,7 @@ export default function ThemeSelector() {
   return (
     <div className="z-50 relative" ref={containerRef}>
       <motion.button
-        className="rounded-full backdrop-blur-sm flex items-center justify-center cursor-pointer border-2 border-[#c9c9c9]/50 size-12"
+        className="rounded-full backdrop-blur-sm flex items-center justify-center cursor-pointer border-2 border-[#c9c9c9]/50 h-12 w-auto px-2 gap-2"
         onClick={() => setShowThemes(!showThemes)}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
@@ -102,12 +102,15 @@ export default function ThemeSelector() {
             background: `linear-gradient(135deg, ${currentTheme.primaryColor}, ${currentTheme.secondaryColor})`,
           }}
         ></div>
+        <span className={`${showThemes ? 'text-white' : 'text-[#86868b]'}`}>
+          Themes
+        </span>
       </motion.button>
 
       <AnimatePresence>
         {showThemes && isLargeScreen && (
           <motion.div
-            className={`absolute top-16 backdrop-blur-sm border-2 border-[#c9c9c9]/50 rounded-2xl p-3 flex flex-col gap-2 w-40 ${
+            className={`absolute top-16 backdrop-blur-sm border-2 border-[#c9c9c9]/50 rounded-2xl p-2 flex flex-col gap-1 ${
               isLargeScreen ? 'left-0' : 'right-0'
             }`}
             initial={{ opacity: 0, y: -10 }}
