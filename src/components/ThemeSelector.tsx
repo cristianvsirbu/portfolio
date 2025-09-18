@@ -90,7 +90,7 @@ export default function ThemeSelector() {
   return (
     <div className="z-50 relative" ref={containerRef}>
       <motion.button
-        className={`backdrop-blur-sm flex items-center justify-center cursor-pointer border-2 border-[#c9c9c9]/50 h-12 w-auto gap-2 ${showThemes ? 'rounded-2xl px-3' : 'rounded-full px-2'}`}
+        className={`backdrop-blur-sm flex items-center justify-center cursor-pointer border-2 border-[#c9c9c9]/50 h-12 w-12 gap-2 rounded-full`}
         onClick={() => setShowThemes(!showThemes)}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
@@ -102,9 +102,57 @@ export default function ThemeSelector() {
             background: `linear-gradient(135deg, ${currentTheme.primaryColor}, ${currentTheme.secondaryColor})`,
           }}
         ></div>
-        <span className={`${showThemes ? 'text-white' : 'text-[#86868b]'}`}>
-          Themes
-        </span>
+        <motion.svg
+          className="absolute inset-0 w-full h-full pointer-events-none"
+          viewBox="0 0 48 48"
+          animate={{ rotate: 360 }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        >
+          <defs>
+            {/* Top semicircle path - smaller radius for space from border */}
+            <path id="top-arc" d="M 8 24 A 16 16 0 0 1 40 24" fill="none" />
+            {/* Bottom semicircle path - smaller radius for space from border */}
+            <path id="bottom-arc" d="M 40 24 A 16 16 0 0 1 8 24" fill="none" />
+          </defs>
+        
+          {/* Top THEMES text */}
+          <text
+            className={`text-[8px] font-black fill-current ${showThemes ? 'text-white' : 'text-[#86868b]'}`}
+            letterSpacing="1"
+          >
+            <textPath href="#top-arc" startOffset="50%" textAnchor="middle">
+              THEMES
+            </textPath>
+          </text>
+        
+          {/* Bottom THEMES text */}
+          <text
+            className={`text-[8px] font-black fill-current ${showThemes ? 'text-white' : 'text-[#86868b]'}`}
+            letterSpacing="1"
+          >
+            <textPath href="#bottom-arc" startOffset="50%" textAnchor="middle">
+              THEMES
+            </textPath>
+          </text>
+        
+          {/* Side dots - adjusted position for smaller radius */}
+          <circle
+            cx="5"
+            cy="24"
+            r="2"
+            className={`fill-current ${showThemes ? 'text-white' : 'text-[#86868b]'}`}
+          />
+          <circle
+            cx="44"
+            cy="24"
+            r="2"
+            className={`fill-current ${showThemes ? 'text-white' : 'text-[#86868b]'}`}
+          />
+        </motion.svg>
       </motion.button>
 
       <AnimatePresence>
