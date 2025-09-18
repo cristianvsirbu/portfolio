@@ -113,9 +113,9 @@ export default function ThemeSelector() {
           }}
         >
           <defs>
-            {/* Top semicircle path - smaller radius for space from border */}
+            {/* Top semicircle path */}
             <path id="top-arc" d="M 8 24 A 16 16 0 0 1 40 24" fill="none" />
-            {/* Bottom semicircle path - smaller radius for space from border */}
+            {/* Bottom semicircle path */}
             <path id="bottom-arc" d="M 40 24 A 16 16 0 0 1 8 24" fill="none" />
           </defs>
         
@@ -139,7 +139,7 @@ export default function ThemeSelector() {
             </textPath>
           </text>
         
-          {/* Side dots - adjusted position for smaller radius */}
+          {/* Side dots */}
           <circle
             cx="5"
             cy="24"
