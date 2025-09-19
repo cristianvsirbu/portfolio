@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Navigation from '@/components/Navigation';
 import { ThemeProvider } from '@/contexts/ThemeContext';
 import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { inter, jersey20, geistMono, sonsie } from '@/lib/fonts';
 
 export const metadata: Metadata = {
@@ -40,6 +41,7 @@ export default function RootLayout({
           </footer>
         </ThemeProvider>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
