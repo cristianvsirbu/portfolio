@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Project as ProjectType } from '@/lib/types';
 import Image from 'next/image';
 import TermHighlighter from './TermHighlighter';
+import { track } from '@vercel/analytics';
 
 interface ProjectProps {
   project: ProjectType;
@@ -68,11 +69,32 @@ const projectContainerVariants = {
 
 const Project = memo(
   function Project({ project, index = 0 }: ProjectProps) {
-    // Memoize class names to prevent recalculation
     const imageClassName = useMemo(
       () => (project.isEmpty ? 'project-gradient-bg rounded-[20px]' : ''),
       [project.isEmpty]
     );
+
+    const handleSiteClick = () => {
+      try {
+        track('project_site_click', {
+          project_name: project.name,
+          site_url: project.site || '',
+        });
+      } catch (error) {
+        console.error('Analytics track error (site click):', error);
+      }
+    };
+
+    const handleRepoClick = () => {
+      try {
+        track('project_repo_click', {
+          project_name: project.name,
+          repo_url: project.repo || '',
+        });
+      } catch (error) {
+        console.error('Analytics track error (repo click):', error);
+      }
+    };
 
     return (
       <motion.div
@@ -103,7 +125,7 @@ const Project = memo(
             />
           </motion.div>
 
-          <motion.section 
+          <motion.section
             className="flex flex-col items-center lg:items-start"
             variants={contentVariants}
           >
@@ -113,7 +135,7 @@ const Project = memo(
             </p>
           </motion.section>
 
-          <motion.div 
+          <motion.div
             className="mt-auto flex flex-col lg:flex-row gap-3 md:gap-6 w-full"
             variants={contentVariants}
           >
@@ -123,6 +145,7 @@ const Project = memo(
                 target="_blank"
                 rel="noopener noreferrer"
                 className="site-button"
+                onClick={handleSiteClick}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.1 }}
@@ -142,6 +165,7 @@ const Project = memo(
                 href={project.repo}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={handleRepoClick}
                 className="repo-button"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
