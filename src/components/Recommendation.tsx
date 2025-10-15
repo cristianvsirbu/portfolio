@@ -85,7 +85,7 @@ const Recommendation = memo(function Recommendation({
             whileTap={{ scale: 0.95 }}
           >
             <Image
-              src="/icons/social/linkedin.png"
+              src="/icons/social/linkedin.webp"
               alt="LinkedIn profile"
               width={30}
               height={30}

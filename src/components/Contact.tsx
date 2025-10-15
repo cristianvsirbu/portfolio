@@ -113,7 +113,7 @@ const Contact = () => {
               whileTap={{ scale: 0.9 }}
             >
               <Image
-                src="/icons/technologies/additional/github.png"
+                src="/icons/technologies/additional/github.webp"
                 alt="GitHub profile"
                 width={56}
                 height={56}
@@ -131,7 +131,7 @@ const Contact = () => {
               whileTap={{ scale: 0.9 }}
             >
               <Image
-                src="/icons/social/linkedin.png"
+                src="/icons/social/linkedin.webp"
                 alt="LinkedIn profile"
                 width={56}
                 height={56}

@@ -8,7 +8,7 @@ import Contact from '@/components/Contact';
 
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/cristianvsirbu/';
 export const GITHUB_URL = 'https://github.com/cristianvsirbu';
-export const PROFILE_PIC = '/images/profile.png';
+export const PROFILE_PIC = '/images/profile.webp';
 export const EMAIL = 'cristiansirbudev@gmail.com';
 export const LOCATION = 'Bucharest, Romania';
 export const PROGRAMMING_YEARS = getCurrentYear() - 2018;
@@ -18,115 +18,115 @@ export const TECHNOLOGIES: Technology[] = [
   // Main technologies
   {
     name: 'TypeScript',
-    icon: '/icons/technologies/main/ts.png',
+    icon: '/icons/technologies/main/ts.webp',
     category: 'main',
   },
   {
     name: 'React',
-    icon: '/icons/technologies/main/react.png',
+    icon: '/icons/technologies/main/react.webp',
     category: 'main',
   },
   {
     name: 'Next.js',
-    icon: '/icons/technologies/main/next.png',
+    icon: '/icons/technologies/main/next.webp',
     category: 'main',
   },
   {
     name: 'Tailwind CSS',
-    icon: '/icons/technologies/main/tailwind.png',
+    icon: '/icons/technologies/main/tailwind.webp',
     category: 'main',
   },
-  { name: 'Git', icon: '/icons/technologies/main/git.png', category: 'main' },
+  { name: 'Git', icon: '/icons/technologies/main/git.webp', category: 'main' },
 
   // Additional technologies
   {
     name: 'Node.js',
-    icon: '/icons/technologies/additional/node.png',
+    icon: '/icons/technologies/additional/node.webp',
     category: 'additional',
   },
   {
     name: 'Redux',
-    icon: '/icons/technologies/additional/redux.png',
+    icon: '/icons/technologies/additional/redux.webp',
     category: 'additional',
   },
   {
     name: 'Vite',
-    icon: '/icons/technologies/additional/vite.png',
+    icon: '/icons/technologies/additional/vite.webp',
     category: 'additional',
   },
   {
     name: 'Express',
-    icon: '/icons/technologies/additional/express.png',
+    icon: '/icons/technologies/additional/express.webp',
     category: 'additional',
   },
   {
     name: 'Sass',
-    icon: '/icons/technologies/additional/sass.png',
+    icon: '/icons/technologies/additional/sass.webp',
     category: 'additional',
   },
   {
     name: 'Three.js',
-    icon: '/icons/technologies/additional/threejs.png',
+    icon: '/icons/technologies/additional/threejs.webp',
     category: 'additional',
   },
   {
     name: 'GitHub',
-    icon: '/icons/technologies/additional/github.png',
+    icon: '/icons/technologies/additional/github.webp',
     category: 'additional',
   },
   {
     name: 'npm',
-    icon: '/icons/technologies/additional/npm.png',
+    icon: '/icons/technologies/additional/npm.webp',
     category: 'additional',
   },
   {
     name: 'Yarn',
-    icon: '/icons/technologies/additional/yarn.png',
+    icon: '/icons/technologies/additional/yarn.webp',
     category: 'additional',
   },
   {
     name: 'Figma',
-    icon: '/icons/technologies/additional/figma.png',
+    icon: '/icons/technologies/additional/figma.webp',
     category: 'additional',
   },
   {
     name: 'Adobe Illustrator',
-    icon: '/icons/technologies/additional/illustrator.png',
+    icon: '/icons/technologies/additional/illustrator.webp',
     category: 'additional',
   },
   {
     name: 'Adobe Photoshop',
-    icon: '/icons/technologies/additional/photoshop.png',
+    icon: '/icons/technologies/additional/photoshop.webp',
     category: 'additional',
   },
   {
     name: 'ClickUp',
-    icon: '/icons/technologies/additional/clickup.png',
+    icon: '/icons/technologies/additional/clickup.webp',
     category: 'additional',
   },
   {
     name: 'Linear',
-    icon: '/icons/technologies/additional/linear.png',
+    icon: '/icons/technologies/additional/linear.webp',
     category: 'additional',
   },
   {
     name: 'Slack',
-    icon: '/icons/technologies/additional/slack.png',
+    icon: '/icons/technologies/additional/slack.webp',
     category: 'additional',
   },
   {
     name: 'Supabase',
-    icon: '/icons/technologies/additional/supabase.png',
+    icon: '/icons/technologies/additional/supabase.webp',
     category: 'additional',
   },
   {
     name: 'React Flow',
-    icon: '/icons/technologies/additional/react_flow.png',
+    icon: '/icons/technologies/additional/react_flow.webp',
     category: 'additional',
   },
   {
     name: 'Sentry',
-    icon: '/icons/technologies/additional/sentry.png',
+    icon: '/icons/technologies/additional/sentry.webp',
     category: 'additional',
   },
 ];
@@ -136,7 +136,7 @@ export const PROJECTS: Project[] = [
     name: 'Project Mars',
     description:
       'Project Mars is a frontend app for exploring the Martian landscape. It uses React, React Router, Recharts, and Three.js for a responsive, visual experience, with Vite for fast builds. Data is scraped from NASA via Puppeteer in a Node.js + Express.js backend. A Vercel serverless branch also delivers this data through a serverless function. Styled with Tailwind CSS, it features custom assets from Figma/Illustrator and optimized 3D models via Draco3D.',
-    icon: '/icons/projects/mars.png',
+    icon: '/icons/projects/mars.webp',
     site: 'https://project-mars-serverless.vercel.app',
     repo: 'https://github.com/cristianvsirbu/project-mars',
   },
@@ -144,7 +144,7 @@ export const PROJECTS: Project[] = [
     name: 'Bluestar Bank',
     description:
       'Designed and developed Bluestar Bank, a fully  responsive, single-page banking application. Showcasing expertise in  HTML, CSS, Tailwind CSS, JavaScript, React, and Vite, this app features  an intuitive UI, smooth animations, and real-time exchange rate updates, delivering a seamless banking experience.',
-    icon: '/icons/projects/bluestar.png',
+    icon: '/icons/projects/bluestar.webp',
     site: 'https://bluestar-bank.netlify.app',
     repo: 'https://github.com/cristianvsirbu/bank-app',
   },
@@ -152,7 +152,7 @@ export const PROJECTS: Project[] = [
     name: 'Password Generator',
     description:
       'A straightforward password generator that uses JavaScript, HTML, and CSS. Users can create strong, adaptable passwords with this tool by selecting their preferred length and character set. Combining a variety of capital, lowercase, numeric, and special characters guarantees increased security. The design is accessible on all devices due to its responsiveness and ease of use',
-    icon: '/icons/projects/passgen.png',
+    icon: '/icons/projects/passgen.webp',
     site: 'https://passgen-cs.netlify.app',
     repo: 'https://github.com/cristianvsirbu/password-generator',
   },
@@ -160,7 +160,7 @@ export const PROJECTS: Project[] = [
     name: 'Auth System',
     description:
       'A comprehensive authentication system built with React 19 and TypeScript, providing multiple authentication methods in a responsive and user-friendly interface. Features email verification with 6-digit PIN, anonymous access with 16-digit codes, and Google OAuth. Includes smart input detection, form validation, toast notifications, and protected routes with localStorage persistence. Built with Vite 6, Tailwind CSS 4, and includes comprehensive testing with Vitest and Playwright.',
-    icon: '/icons/projects/auth_system.png',
+    icon: '/icons/projects/auth_system.webp',
     site: '',
     repo: 'https://github.com/cristianvsirbu/auth-system',
   },
@@ -168,7 +168,7 @@ export const PROJECTS: Project[] = [
     name: 'More to come...',
     isEmpty: true,
     description: 'Coming soon-ish. Probably epic.',
-    icon: '/icons/projects/empty_project.png',
+    icon: '/icons/projects/empty_project.webp',
   },
 ];
 
