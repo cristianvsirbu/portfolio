@@ -73,20 +73,36 @@ const Contact = () => {
             feedback, or just to say hi. My inbox is always open, and I&apos;ll
             get back to you as soon as I can!
           </p>
-          <motion.a
-            href={`mailto:${EMAIL}`}
-            className="site-button w-full md:max-w-1/2"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Image
-              src="/icons/misc/mail.svg"
-              alt="Open email client"
-              width={18}
-              height={18}
-            />
-            <span>Send Email</span>
-          </motion.a>
+          <div className="flex gap-4 w-full flex-col md:flex-row items-center">
+            <motion.a
+              href={`mailto:${EMAIL}`}
+              className="site-button w-full md:max-w-1/2"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Image
+                src="/icons/misc/mail.svg"
+                alt="Open email client"
+                width={18}
+                height={18}
+              />
+              <span>Send Email</span>
+            </motion.a>
+            <motion.button
+              onClick={() => navigator.clipboard.writeText(EMAIL)}
+              className="site-button cursor-pointer w-full"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Image
+                src="/icons/misc/mail.svg"
+                alt="Open email client"
+                width={18}
+                height={18}
+              />
+              <span>Copy Email</span>
+            </motion.button>
+          </div>
         </motion.div>
         <motion.div
           className="flex flex-col items-center lg:items-start gap-4 w-full lg:max-w-1/2"
