@@ -85,7 +85,7 @@ const Contact = () => {
               width={18}
               height={18}
             />
-            <span>Say Hello</span>
+            <span>Send Email</span>
           </motion.a>
         </motion.div>
         <motion.div
