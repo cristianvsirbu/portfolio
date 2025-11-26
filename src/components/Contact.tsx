@@ -95,7 +95,7 @@ const Contact = () => {
               whileTap={{ scale: 0.95 }}
             >
               <Image
-                src="/icons/misc/mail.svg"
+                src="/icons/misc/clipboard.svg"
                 alt="Open email client"
                 width={18}
                 height={18}
