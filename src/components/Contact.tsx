@@ -3,6 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { EMAIL, GITHUB_URL, LINKEDIN_URL } from '@/lib/constants';
 import Image from 'next/image';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Contact = () => {
   const containerVariants = {
@@ -57,6 +58,7 @@ const Contact = () => {
     <section>
       <h1 className="title">Contact</h1>
       <h2 className="subtitle">Get In Touch:</h2>
+      <Toaster position="bottom-center" reverseOrder={true} />
       <motion.div
         className="flex flex-col md:flex-row gap-8 lg:gap-16 mt-4"
         variants={containerVariants}
@@ -89,7 +91,18 @@ const Contact = () => {
               <span>Send Email</span>
             </motion.a>
             <motion.button
-              onClick={() => navigator.clipboard.writeText(EMAIL)}
+              onClick={() => {
+                navigator.clipboard.writeText(EMAIL);
+                toast.success('Email copied to clipboard!', {
+                  style: {
+                    background: '#000000',
+                    color: '#ffffff',
+                    borderRadius: '24px',
+                    border: '2px solid rgba(201, 201, 201, 0.4)',
+                    paddingLeft: '12px',
+                  },
+                });
+              }}
               className="repo-button cursor-pointer w-full md:max-w-1/2"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
