@@ -90,7 +90,7 @@ const Contact = () => {
             </motion.a>
             <motion.button
               onClick={() => navigator.clipboard.writeText(EMAIL)}
-              className="site-button cursor-pointer w-full"
+              className="repo-button cursor-pointer w-full md:max-w-1/2"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
