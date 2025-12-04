@@ -33,7 +33,7 @@ export default function RootLayout({
                 src="/icons/misc/heart.svg"
                 alt="heart"
                 width={12}
-                height={12}
+                height={11}
                 className="inline-block mx-1"
               />
               by Cristian Sîrbu

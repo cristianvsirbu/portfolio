@@ -86,7 +86,7 @@ const Contact = () => {
                 src="/icons/misc/mail.svg"
                 alt="Open email client"
                 width={18}
-                height={18}
+                height={13}
               />
               <span>Send Email</span>
             </motion.a>
