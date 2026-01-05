@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 import { SECTIONS } from '@/lib/constants';
 
 export function useActiveSection() {
@@ -8,6 +9,7 @@ export function useActiveSection() {
   const allSectionIds = SECTIONS.map((section) => section.id);
   const sectionsRef = useRef<Record<string, HTMLElement | null>>({});
   const lastScrollTop = useRef<number>(0);
+  const pathname = usePathname();
 
   useEffect(() => {
     // Track all sections and their visibility ratios
@@ -115,7 +117,12 @@ export function useActiveSection() {
       }
     });
 
-    // Handle fast scrolling with scroll event listener
+    // Cleanup if no sections found in the DOM (user is on 404)
+    if (Object.keys(sectionsRef.current).length === 0) {
+      observer.disconnect();
+      return;
+    }
+
     const handleScroll = () => {
       if (window.scrollY === 0) {
         setActiveSection('home');
@@ -135,7 +142,7 @@ export function useActiveSection() {
       observer.disconnect();
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [activeSection, allSectionIds]);
+  }, [activeSection, allSectionIds, pathname]);
 
   return { activeSection, navSections, allSectionIds };
 }
