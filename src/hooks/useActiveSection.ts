@@ -18,7 +18,6 @@ export function useActiveSection() {
 
     const thresholds = [0.1, 0.2, 0.3, 0.4, 0.5];
 
-    // Update sections visibility values
     const updateSectionVisibility = (id: string, ratio: number) => {
       sectionVisibility.set(id, ratio);
     };
