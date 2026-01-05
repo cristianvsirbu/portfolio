@@ -33,7 +33,6 @@ export function useActiveSection() {
       let highestVisibleSection = 'home';
       let highestRatio = 0;
 
-      // First pass: find highest visibility ratio
       sectionVisibility.forEach((ratio, id) => {
         if (ratio > highestRatio) {
           highestRatio = ratio;
