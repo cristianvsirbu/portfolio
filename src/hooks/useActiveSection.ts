@@ -40,7 +40,6 @@ export function useActiveSection() {
         }
       });
 
-      // If section is barely visible (less than 15%), use scroll direction to decide
       if (highestRatio < 0.15) {
         // When scrolling down, prefer the section that's coming into view
         if (scrollingDown) {
