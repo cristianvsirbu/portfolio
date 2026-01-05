@@ -111,7 +111,6 @@ export function useActiveSection() {
       if (el) {
         sectionsRef.current[id] = el;
         observer.observe(el);
-        // Initialize visibility map
         sectionVisibility.set(id, 0);
       }
     });
