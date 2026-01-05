@@ -22,7 +22,6 @@ export function useActiveSection() {
       sectionVisibility.set(id, ratio);
     };
 
-    // Determine the most visible section, with preference to the scroll direction
     const getMostVisibleSection = () => {
       if (sectionVisibility.size === 0) return 'home';
 
