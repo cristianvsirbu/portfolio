@@ -16,7 +16,6 @@ export function useActiveSection() {
     // Track all sections and their visibility ratios
     const sectionVisibility = new Map<string, number>();
 
-    // Less strict thresholds for better detection
     const thresholds = [0.1, 0.2, 0.3, 0.4, 0.5];
 
     // Update sections visibility values
@@ -126,7 +125,7 @@ export function useActiveSection() {
     }
 
     const handleScroll = () => {
-      
+
       if (window.scrollY === 0) {
         setActiveSection('home');
       } else if (
