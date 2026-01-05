@@ -298,7 +298,7 @@ export default function Navigation() {
                 ))}
 
                 <motion.a
-                  href="/resume/CRISTIAN-SIRBU.pdf"
+                  href="/resume/CRISTIAN-SIRBU-RESUME.pdf"
                   variants={mobileNavItemVariants}
                   className="mt-8 text-3xl font-medium py-3 px-12 rounded-full"
                   style={{
