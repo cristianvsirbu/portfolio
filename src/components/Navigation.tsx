@@ -5,6 +5,7 @@ import { useRef, useState, useEffect } from 'react';
 import ThemeSelector from './ThemeSelector';
 import GradientText from './GradientText';
 import { useTheme } from '@/hooks/useTheme';
+import { usePathname } from 'next/navigation';
 
 export default function Navigation() {
   const { activeSection, navSections } = useActiveSection();
@@ -16,6 +17,7 @@ export default function Navigation() {
     left: number;
   } | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -109,6 +111,10 @@ export default function Navigation() {
     open: { opacity: 1, y: 0 },
   };
 
+  if (pathname !== '/') {
+    return null;
+  }
+  
   return (
     <header className="sticky top-0 z-50">
       {/* Desktop Navigation */}
