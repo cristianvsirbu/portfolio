@@ -71,7 +71,7 @@ const Contact = () => {
           variants={itemVariants}
         >
           <p className="paragraph text-center lg:text-left">
-            Feel free to drop me a message — whether it&apos;s a question,
+            Feel free to drop me a message - whether it&apos;s a question,
             feedback, or just to say hi. My inbox is always open, and I&apos;ll
             get back to you as soon as I can!
           </p>
