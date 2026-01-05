@@ -113,15 +113,7 @@ export function useActiveSection() {
       }
     });
 
-    // Cleanup if no sections found in the DOM (user is on 404)
-    if (Object.keys(sectionsRef.current).length === 0) {
-      setActiveSection('home');
-      observer.disconnect();
-      return;
-    }
-
     const handleScroll = () => {
-
       if (window.scrollY === 0) {
         setActiveSection('home');
       } else if (
