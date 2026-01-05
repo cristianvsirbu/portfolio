@@ -128,7 +128,6 @@ export function useActiveSection() {
         window.innerHeight + window.scrollY >=
         document.body.offsetHeight - 100
       ) {
-        // Near bottom of page - likely in the last section
         const lastSection = allSectionIds[allSectionIds.length - 1];
         setActiveSection(lastSection);
       }
