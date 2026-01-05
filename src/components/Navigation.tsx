@@ -119,7 +119,7 @@ export default function Navigation() {
         animate="show"
       >
         <motion.a
-          href="#home"
+          href="/#home"
           variants={item}
           className={`rounded-full backdrop-blur-sm flex transition-all duration-150 items-center justify-center cursor-pointer border-2 border-[#c9c9c9]/50 h-12 w-12 font-sonsie text-2xl`}
           whileHover={{ scale: 1.1 }}
@@ -169,7 +169,7 @@ export default function Navigation() {
           {/* Navigation links */}
           {navSections.map((section) => (
             <motion.a
-              href={`#${section.id}`}
+              href={`/#${section.id}`}
               key={section.id}
               ref={(el) => {
                 navRefs.current[section.id] = el;
@@ -223,7 +223,7 @@ export default function Navigation() {
         {/* Mobile Header */}
         <div className="flex p-4 justify-between items-center relative">
           <motion.a
-            href="#home"
+            href="/#home"
             className="rounded-full flex transition-all duration-150 items-center justify-center cursor-pointer h-10 w-10 font-sonsie text-2xl overflow-hidden"
             whileTap={{ scale: 0.95 }}
             onClick={(e) => handleNavLinkClick(e, 'home')}
@@ -282,7 +282,7 @@ export default function Navigation() {
               <div className="flex flex-col items-center justify-center flex-1 pt-8 pb-16 px-8">
                 {navSections.map((section) => (
                   <motion.a
-                    href={`#${section.id}`}
+                    href={`/#${section.id}`}
                     key={section.id}
                     onClick={(e) => handleNavLinkClick(e, section.id)}
                     variants={mobileNavItemVariants}
