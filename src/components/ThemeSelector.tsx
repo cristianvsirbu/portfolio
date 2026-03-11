@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '@/hooks/useTheme';
 import { THEMES } from '@/lib/themes';
 import { useState, useEffect, useRef } from 'react';
+import posthog from 'posthog-js';
 
 export default function ThemeSelector() {
   const { currentTheme, setTheme } = useTheme();
@@ -109,7 +110,7 @@ export default function ThemeSelector() {
           transition={{
             duration: 20,
             repeat: Infinity,
-            ease: "linear"
+            ease: 'linear',
           }}
         >
           <defs>
@@ -118,7 +119,7 @@ export default function ThemeSelector() {
             {/* Bottom semicircle path */}
             <path id="bottom-arc" d="M 40 24 A 16 16 0 0 1 8 24" fill="none" />
           </defs>
-        
+
           {/* Top THEMES text */}
           <text
             className={`text-[8px] font-black fill-current ${showThemes ? 'text-white' : 'text-[#86868b]'}`}
@@ -128,7 +129,7 @@ export default function ThemeSelector() {
               THEMES
             </textPath>
           </text>
-        
+
           {/* Bottom THEMES text */}
           <text
             className={`text-[8px] font-black fill-current ${showThemes ? 'text-white' : 'text-[#86868b]'}`}
@@ -138,7 +139,7 @@ export default function ThemeSelector() {
               THEMES
             </textPath>
           </text>
-        
+
           {/* Side dots */}
           <circle
             cx="5"
@@ -177,6 +178,10 @@ export default function ThemeSelector() {
                 whileHover={!isAnimating ? { scale: 1.02 } : {}}
                 whileTap={!isAnimating ? { scale: 0.98 } : {}}
                 onClick={() => {
+                  posthog.capture('theme_changed', {
+                    theme_id: theme.id,
+                    theme_name: theme.name,
+                  });
                   setTheme(theme.id);
                   setShowThemes(false);
                 }}
@@ -230,6 +235,10 @@ export default function ThemeSelector() {
                   custom={i}
                   className="flex flex-col items-center gap-2"
                   onClick={() => {
+                    posthog.capture('theme_changed', {
+                      theme_id: theme.id,
+                      theme_name: theme.name,
+                    });
                     setTheme(theme.id);
                     setShowThemes(false);
                   }}

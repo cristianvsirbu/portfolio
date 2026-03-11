@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { EMAIL, GITHUB_URL, LINKEDIN_URL } from '@/lib/constants';
 import Image from 'next/image';
 import toast, { Toaster } from 'react-hot-toast';
+import posthog from 'posthog-js';
 
 const Contact = () => {
   const containerVariants = {
@@ -81,6 +82,7 @@ const Contact = () => {
               className="site-button w-full md:max-w-1/2"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => posthog.capture('email_send_clicked')}
             >
               <Image
                 src="/icons/misc/mail.svg"
@@ -93,6 +95,7 @@ const Contact = () => {
             <motion.button
               onClick={() => {
                 navigator.clipboard.writeText(EMAIL);
+                posthog.capture('email_copied');
                 toast.success('Email copied to clipboard!', {
                   style: {
                     background: '#000000',
@@ -140,6 +143,7 @@ const Contact = () => {
               variants={socialItemVariants}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
+              onClick={() => posthog.capture('github_profile_clicked')}
             >
               <Image
                 src="/icons/technologies/additional/github.webp"
@@ -158,6 +162,7 @@ const Contact = () => {
               variants={socialItemVariants}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
+              onClick={() => posthog.capture('linkedin_profile_clicked')}
             >
               <Image
                 src="/icons/social/linkedin.webp"

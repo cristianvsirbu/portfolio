@@ -6,6 +6,7 @@ import ThemeSelector from './ThemeSelector';
 import GradientText from './GradientText';
 import { useTheme } from '@/hooks/useTheme';
 import { usePathname } from 'next/navigation';
+import posthog from 'posthog-js';
 
 export default function Navigation() {
   const { activeSection, navSections } = useActiveSection();
@@ -58,6 +59,7 @@ export default function Navigation() {
   const handleNavLinkClick = (e?: React.MouseEvent, sectionId?: string) => {
     setIsMobileMenuOpen(false);
     if (sectionId) {
+      posthog.capture('nav_section_clicked', { section: sectionId });
       setTimeout(() => {
         const element = document.getElementById(sectionId);
         if (element) {
@@ -114,7 +116,7 @@ export default function Navigation() {
   if (pathname !== '/') {
     return null;
   }
-  
+
   return (
     <header className="sticky top-0 z-50">
       {/* Desktop Navigation */}
@@ -191,6 +193,9 @@ export default function Navigation() {
                 transition: { duration: 0.1, type: 'tween', stiffness: 300 },
               }}
               whileTap={{ scale: 0.95 }}
+              onClick={() =>
+                posthog.capture('nav_section_clicked', { section: section.id })
+              }
             >
               {section.name}
             </motion.a>
@@ -205,6 +210,7 @@ export default function Navigation() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             download
+            onClick={() => posthog.capture('resume_downloaded')}
           >
             Resume
           </motion.a>
@@ -312,6 +318,7 @@ export default function Navigation() {
                   }}
                   whileTap={{ scale: 0.98 }}
                   download
+                  onClick={() => posthog.capture('resume_downloaded')}
                 >
                   Resume
                 </motion.a>

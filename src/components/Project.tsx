@@ -5,6 +5,7 @@ import { Project as ProjectType } from '@/lib/types';
 import Image from 'next/image';
 import TermHighlighter from './TermHighlighter';
 import { track } from '@vercel/analytics';
+import posthog from 'posthog-js';
 
 interface ProjectProps {
   project: ProjectType;
@@ -83,6 +84,10 @@ const Project = memo(
       } catch (error) {
         console.error('Analytics track error (site click):', error);
       }
+      posthog.capture('project_site_click', {
+        project_name: project.name,
+        site_url: project.site || '',
+      });
     };
 
     const handleRepoClick = () => {
@@ -94,6 +99,10 @@ const Project = memo(
       } catch (error) {
         console.error('Analytics track error (repo click):', error);
       }
+      posthog.capture('project_repo_click', {
+        project_name: project.name,
+        repo_url: project.repo || '',
+      });
     };
 
     return (
