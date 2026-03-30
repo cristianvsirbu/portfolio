@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
-import { SECTIONS } from '@/lib/constants';
+import SECTIONS from '@/lib/sections';
 
 export function useActiveSection() {
   const [activeSection, setActiveSection] = useState('home');

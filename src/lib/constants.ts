@@ -1,10 +1,5 @@
-import Home from '@/components/Home';
 import { getCurrentYear } from './utils';
-import { Job, Project, Section, Technology } from '@/lib/types';
-import About from '@/components/About';
-import Experience from '@/components/Experience';
-import Projects from '@/components/Projects';
-import Contact from '@/components/Contact';
+import { Job, Project, Technology } from '@/lib/types';
 
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/cristianvsirbu/';
 export const GITHUB_URL = 'https://github.com/cristianvsirbu';
@@ -212,34 +207,6 @@ export const JOBS: Job[] = [
   },
 ];
 
-export const SECTIONS: Section[] = [
-  {
-    id: 'home',
-    name: 'Home',
-    component: Home,
-    isSpecial: true,
-  },
-  {
-    id: 'about',
-    name: 'About',
-    component: About,
-  },
-  {
-    id: 'experience',
-    name: 'Experience',
-    component: Experience,
-  },
-  {
-    id: 'projects',
-    name: 'Projects',
-    component: Projects,
-  },
-  {
-    id: 'contact',
-    name: 'Contact',
-    component: Contact,
-  },
-];
 export const RECOMMENDATIONS = [
   {
     text: "Cristian is a standout frontend engineer with a rare blend of creativity and technical precision. His keen eye for design and UX elevates his work, ensuring interfaces are not just functional but intuitive and polished. Whether working with React, Next.js, or TailwindCSS, Cristian tackles challenges with a methodical approach, consistently improving his solutions through feedback and iteration.\n\nWhat sets Cristian apart is his growth mindset - he absorbs new concepts quickly and applies them with care. His code reflects thoughtfulness and scalability, and his collaborative attitude makes him a valuable team player. I've seen him transform complex problems into elegant solutions, and his dedication to craftsmanship is evident in every project.\n\nWithout hesitation, I'd recommend Cristian for any frontend role. He's the kind of developer who not only meets expectations but raises the bar for those around him.",

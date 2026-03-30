@@ -1,5 +1,5 @@
 import React from 'react';
-import { SECTIONS } from '@/lib/constants';
+import SECTIONS from '@/lib/sections';
 
 const fullScreenSections = ['home', 'contact'];
 
