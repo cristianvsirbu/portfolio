@@ -7,7 +7,7 @@ const Experience = () => {
     <section>
       <h1 className="title">Experience</h1>
       <h2 className="subtitle">Where I&apos;ve Worked:</h2>
-      <div className="flex flex-col md:flex-row gap-16 mt-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mt-8">
         {JOBS.map((job) => (
           <Job key={job.company} job={job} />
         ))}

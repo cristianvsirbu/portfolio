@@ -56,7 +56,7 @@ const highlightContainerVariants = {
 export default function Job({ job, index = 0 }: JobProps) {
   return (
     <motion.div
-      className="flex flex-col gap-8 w-full md:w-1/2"
+      className="flex flex-col gap-8 w-full"
       variants={jobVariants}
       initial="hidden"
       whileInView="visible"

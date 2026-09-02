@@ -13,7 +13,7 @@ export const HIGHLIGHT_TERMS = [
   'Supabase',
   'Three.js',
   'Git',
-  'SASS',
+  'Sass',
   'SCSS',
   'DaisyUI/Tailwind',
   'Vite',
@@ -36,4 +36,5 @@ export const HIGHLIGHT_TERMS = [
   'UX',
   'UI',
   'Illustrator',
+  'JSON'
 ];

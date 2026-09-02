@@ -169,11 +169,24 @@ export const PROJECTS: Project[] = [
 
 export const JOBS: Job[] = [
   {
+    company: 'Unicepta',
+    position: 'Frontend Developer',
+    location: 'Berlin, Germany',
+    period: 'May 2026 - Present',
+    isActual: true,
+    highlights: [
+      {
+        title: 'Media Intelligence Platform Development',
+        content:
+          'I build and maintain client-facing surfaces for a global media intelligence platform serving enterprise clients like BMW, Lufthansa, and UBS, including client portals + an automated and manual email reporting system for real-time briefings and alerts. I structure content, layout, and behavior through a JSON-driven configuration layer in the internal CMS, paired with custom CSS/Sass styling to ensure consistent rendering across the portal and across notoriously inconsistent email clients.',
+      }
+    ],
+  },
+  {
     company: 'getitAI',
     position: 'Frontend Developer',
     location: 'San Francisco, California',
-    period: 'August 2023 - Present',
-    isActual: true,
+    period: 'August 2023 - January 2026',
     highlights: [
       {
         title: 'AI Interface Development & Performance Optimization',
